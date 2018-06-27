@@ -132,14 +132,6 @@
       <Project>{4f625deb-8aa0-4e22-89ef-3aac870de966}</Project>
       <Name>SciChart.Xamarin.Wpf.Renderer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TestApp.ClientServer.Shared\TestApp.ClientServer.Shared.csproj">
-      <Project>{f86e8e42-0a22-44fe-9639-d166b01f53ea}</Project>
-      <Name>TestApp.ClientServer.Shared</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TestApp.UI.Shared\TestApp.UI.Shared.csproj">
-      <Project>{f00c2c8a-cbd2-4f65-b840-77b39d845a8a}</Project>
-      <Name>TestApp.UI.Shared</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TestApp.UI\TestApp.UI.csproj">
       <Project>{191f2b44-2613-4009-b456-d50bf39110c7}</Project>
       <Name>TestApp.UI</Name>
