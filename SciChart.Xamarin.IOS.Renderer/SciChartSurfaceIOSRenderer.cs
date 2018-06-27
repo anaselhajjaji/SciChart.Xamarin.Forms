@@ -13,19 +13,19 @@ namespace SciChart.Xamarin.iOS.Renderer
 
         }
 
-
+        // Note Crashes before any breakpoints hit 
         protected override void OnElementChanged(ElementChangedEventArgs<SciChart.Xamarin.Views.Visuals.SciChartSurface> e)
         {
-            //var sciChartSurfaceView = e.NewElement as SciChart.Xamarin.Views.Visuals.SciChartSurface;
-            //if (Control == null)
+            var sciChartSurfaceView = e.NewElement as SciChart.Xamarin.Views.Visuals.SciChartSurface;
+            if (Control == null)
             {
-                //this.SetNativeControl(new SCIChartSurface());
+                this.SetNativeControl(new SCIChartSurface());
 
                 // Some dummy data 
-               // Control.XAxes.Add(new SCINumericAxis());
-                //Control.YAxes.Add(new SCINumericAxis());
-//                Control.XAxes[0].VisibleRange = new SCIDoubleRange(0, 10);
-//                Control.YAxes[0].VisibleRange = new SCIDoubleRange(0, 10);
+                Control.XAxes.Add(new SCINumericAxis());
+                Control.YAxes.Add(new SCINumericAxis());
+                Control.XAxes[0].VisibleRange = new SCIDoubleRange(0, 10);
+                Control.YAxes[0].VisibleRange = new SCIDoubleRange(0, 10);
             }
 
             base.OnElementChanged(e);
