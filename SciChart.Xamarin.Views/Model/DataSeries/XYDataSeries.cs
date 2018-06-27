@@ -1,0 +1,20 @@
+﻿using System;
+
+namespace SciChart.Xamarin.Views.Model.DataSeries
+{
+    public class XYDataSeries<TX, TY> : DataSeries where TX : IComparable where TY : IComparable
+    {
+        public TX[] XValues { get; set; }
+        public TY[] YValues { get; set; }
+
+        public new int Count
+        {
+            get { return YValues.Length; }
+        }
+
+        public XYDataSeries()
+        {
+            SeriesType = DataSeriesType.Xy;
+        }
+    }
+}
