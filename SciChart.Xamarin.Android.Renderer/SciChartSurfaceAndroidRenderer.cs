@@ -8,13 +8,13 @@ using SciChart.Xamarin.Android.Renderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChartSurfaceRenderer))]
+[assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChartSurfaceAndroidRenderer))]
 
 namespace SciChart.Xamarin.Android.Renderer
 {
-    public class SciChartSurfaceRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.Charting.Visuals.SciChartSurface>
+    public class SciChartSurfaceAndroidRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.Charting.Visuals.SciChartSurface>
     {
-        protected SciChartSurfaceRenderer(Context context) : base(context)
+        protected SciChartSurfaceAndroidRenderer(Context context) : base(context)
         {
         }
 

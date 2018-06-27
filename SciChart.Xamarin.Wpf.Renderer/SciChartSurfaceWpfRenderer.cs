@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.WPF;
 
 namespace SciChart.Xamarin.Wpf.Renderer
 {    
-    public class SciChartSurfaceRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.Charting.Visuals.SciChartSurface>
+    public class SciChartSurfaceWpfRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.Charting.Visuals.SciChartSurface>
     {
         protected override void OnElementChanged(ElementChangedEventArgs<SciChart.Xamarin.Views.Visuals.SciChartSurface> e)
         {                        

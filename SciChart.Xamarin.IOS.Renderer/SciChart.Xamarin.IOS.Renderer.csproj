@@ -59,7 +59,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SciChartSurfaceRenderer.cs" />
+    <Compile Include="SciChartSurfaceIOSRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

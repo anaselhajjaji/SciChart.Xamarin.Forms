@@ -6,6 +6,7 @@
              x:Class="TestApp.UI.MainPage">
 
     <StackLayout Orientation="Vertical">
+        <Label Text="Hello world!"></Label>
         <visuals:SciChartSurface HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Black"/>
     </StackLayout>
 
