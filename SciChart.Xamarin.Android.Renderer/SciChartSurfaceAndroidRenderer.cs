@@ -9,6 +9,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Canvas;
 using SciChart.Drawing.OpenGL;
 using SciChart.Xamarin.Android.Renderer;
+using SciChart.Xamarin.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -27,6 +28,12 @@ namespace SciChart.Xamarin.Android.Renderer
                 {"Width", OnWidthChanged},
                 {"Height", OnHeightChanged}
             };
+
+            var license = SciChartLicenseManager.GetLicense(SciChartPlatform.Android);
+            if (license != null)
+            {
+                SciChartSurface.SetRuntimeLicenseKey(license);
+            }
         }        
 
         protected override void OnElementChanged(ElementChangedEventArgs<Views.Visuals.SciChartSurface> e)
@@ -36,7 +43,7 @@ namespace SciChart.Xamarin.Android.Renderer
             {
                 this.SetNativeControl(new SciChartSurface(Context));
                 Control.RenderSurface = new RenderSurface(Context);
-
+                
                 // Some dummy data 
                 Control.XAxes.Add(new NumericAxis(Context));
                 Control.YAxes.Add(new NumericAxis(Context));

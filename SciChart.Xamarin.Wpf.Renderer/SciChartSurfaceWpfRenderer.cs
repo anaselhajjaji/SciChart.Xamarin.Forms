@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Data.Model;
+using SciChart.Xamarin.Views;
 using SciChart.Xamarin.Wpf.Renderer;
 using Xamarin.Forms.Platform.WPF;
 
@@ -14,6 +15,15 @@ namespace SciChart.Xamarin.Wpf.Renderer
 {    
     public class SciChartSurfaceWpfRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.Charting.Visuals.SciChartSurface>
     {
+        public SciChartSurfaceWpfRenderer()
+        {
+            var license = SciChartLicenseManager.GetLicense(SciChartPlatform.Wpf);
+            if (license != null)
+            {
+                SciChartSurface.SetRuntimeLicenseKey(license);
+            }
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<SciChart.Xamarin.Views.Visuals.SciChartSurface> e)
         {                        
             base.OnElementChanged(e);

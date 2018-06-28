@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using SciChart.iOS.Charting;
 using SciChart.Xamarin.iOS.Renderer;
+using SciChart.Xamarin.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
@@ -9,8 +10,12 @@ namespace SciChart.Xamarin.iOS.Renderer
     public class SciChartSurfaceIOSRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.iOS.Charting.SCIChartSurface>
     {
         public SciChartSurfaceIOSRenderer()
-        {      
-
+        {
+            var license = SciChartLicenseManager.GetLicense(SciChartPlatform.iOS);
+            if (license != null)
+            {
+                SCIChartSurface.SetRuntimeLicenseKey(license);
+            }
         }
 
         // Note Crashes before any breakpoints hit 
