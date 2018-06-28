@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using SciChart.Xamarin.iOS.Renderer;
 using Xamarin.Forms;
 
 // General Information about an assembly is controlled through the following 
@@ -37,4 +36,5 @@ using Xamarin.Forms;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-[assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChartSurfaceIOSRenderer))]
+[assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChart.Xamarin.iOS.Renderer.SciChartSurfaceIOSRenderer))]
+[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.iOS.Renderer.DependencyService.DataSeriesFactory))]

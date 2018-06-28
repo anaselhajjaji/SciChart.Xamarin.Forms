@@ -59,6 +59,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyService\DataSeriesFactory.cs" />
     <Compile Include="SciChartSurfaceIOSRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

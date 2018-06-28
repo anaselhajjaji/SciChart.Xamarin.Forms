@@ -40,8 +40,8 @@ namespace SciChart.Xamarin.Android.Renderer
                 // Some dummy data 
                 Control.XAxes.Add(new NumericAxis(Context));
                 Control.YAxes.Add(new NumericAxis(Context));
-                Control.XAxes[0].VisibleRange = new DoubleRange(0, 10);
-                Control.YAxes[0].VisibleRange = new DoubleRange(0, 10);
+                //Control.XAxes[0].VisibleRange = new DoubleRange(0, 10);
+                //Control.YAxes[0].VisibleRange = new DoubleRange(0, 10);
             }
 
             base.OnElementChanged(e);

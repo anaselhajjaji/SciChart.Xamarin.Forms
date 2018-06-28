@@ -5,10 +5,16 @@
              xmlns:visuals="clr-namespace:SciChart.Xamarin.Views.Visuals;assembly=SciChart.Xamarin.Views"
              x:Class="TestApp.UI.MainPage">
 
-    <StackLayout Orientation="Vertical">
-        <Label Text="Hello world!"></Label>
-        <Label Text="Whats up?"></Label>
-        <visuals:SciChartSurface HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="Black"/>
-    </StackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackLayout Orientation="Vertical" Grid.Row="0">
+            <Label Text="Hello Xamarin.Forms world!"></Label>
+        </StackLayout>
+
+        <visuals:SciChartSurface Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+    </Grid>
 
 </ContentPage>
