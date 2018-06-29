@@ -36,4 +36,5 @@ using Xamarin.Forms;
 [assembly: UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]
 
 [assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChartSurfaceAndroidRenderer))]
-[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Android.Renderer.DependencyService.DataSeriesFactory))]
+[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Android.Renderer.DependencyService.DataSeriesFactoryAndroid))]
+[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Android.Renderer.DependencyService.RenderableSeriesFactoryAndroid))]

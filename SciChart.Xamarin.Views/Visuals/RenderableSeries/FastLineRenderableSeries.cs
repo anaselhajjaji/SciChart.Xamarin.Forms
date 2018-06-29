@@ -11,7 +11,7 @@ namespace SciChart.Xamarin.Views.Visuals.RenderableSeries
             if (factory == null)
             {
                 throw new InvalidOperationException(
-                    "Make sure you register the dependency [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.RenderableSeriesFactory))]");
+                    "Cannot get Dependency IRenderableSeriesFactory. Have you registered the dependency via attribute [assembly: Xamarin.Forms.Dependency(typeof(RenderableSeriesFactory))] in your application?");
             }
 
             InnerSeries = factory.NewLineSeries();

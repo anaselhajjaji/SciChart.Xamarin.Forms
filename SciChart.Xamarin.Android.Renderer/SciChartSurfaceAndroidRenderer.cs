@@ -9,6 +9,7 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Canvas;
 using SciChart.Drawing.OpenGL;
 using SciChart.Xamarin.Android.Renderer;
+using SciChart.Xamarin.Android.Renderer.DependencyService;
 using SciChart.Xamarin.Views;
 using SciChart.Xamarin.Views.Helpers;
 using Xamarin.Forms;
@@ -43,6 +44,8 @@ namespace SciChart.Xamarin.Android.Renderer
 
                 // Setup the property mapper 
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SciChartSurface>(Control);
+                _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
+                _propertyMapper.Init(e.NewElement);
 
                 // Some dummy params. TODO Remove these
                 Control.XAxes.Add(new NumericAxis(Context));
@@ -50,12 +53,18 @@ namespace SciChart.Xamarin.Android.Renderer
             }
 
             base.OnElementChanged(e);
-        }
+        }        
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             _propertyMapper?.OnElementPropertyChanged(sender, e);   
             base.OnElementPropertyChanged(sender, e);
+        }
+
+        private void OnRenderableSeriesChanged(SciChartSurfaceX source, SciChartSurface target)
+        {
+            (target.RenderableSeries as IDisposable)?.Dispose();
+            target.RenderableSeries = new RenderableSeriesCollectionAndroid(source.RenderableSeries);
         }
     }
 }

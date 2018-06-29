@@ -7,7 +7,7 @@ using SciChart.Xamarin.Views.Visuals.RenderableSeries;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
-    public class RenderableSeriesFactory : IRenderableSeriesFactory
+    public class RenderableSeriesFactoryWpf : IRenderableSeriesFactory
     {
         public IFastLineRenderableSeries NewLineSeries()
         {

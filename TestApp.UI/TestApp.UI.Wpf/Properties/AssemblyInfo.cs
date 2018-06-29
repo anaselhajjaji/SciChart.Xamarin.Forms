@@ -58,5 +58,5 @@ using Xamarin.Forms.Platform.WPF;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
 [assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChartSurfaceWpfRenderer))]
-[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.DataSeriesFactory))]
-[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.RenderableSeriesFactory))]
+[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.DataSeriesFactoryWpf))]
+[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.RenderableSeriesFactoryWpf))]

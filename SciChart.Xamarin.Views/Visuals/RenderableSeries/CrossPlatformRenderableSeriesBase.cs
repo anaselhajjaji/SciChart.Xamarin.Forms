@@ -1,10 +1,13 @@
-﻿using SciChart.Xamarin.Views.Model.DataSeries;
+﻿using System;
+using SciChart.Xamarin.Views.Model.DataSeries;
 using Xamarin.Forms;
 
 namespace SciChart.Xamarin.Views.Visuals.RenderableSeries
 {
     public abstract class CrossPlatformRenderableSeriesBase : View, IRenderableSeries
     {
+        private static readonly IRenderableSeriesFactory Factory;
+
         /// <summary>
         /// Defines the XAxisId BindableProperty
         /// </summary>
@@ -28,7 +31,17 @@ namespace SciChart.Xamarin.Views.Visuals.RenderableSeries
         /// <summary>
         /// Defines the DataSeries BindableProperty
         /// </summary>
-        public static readonly BindableProperty DataSeriesProperty = BindableProperty.Create("DataSeries", typeof(IDataSeries), typeof(SciChartSurface), null, BindingMode.Default, null, OnDataSeriesPropertyChanged, null, null, null);
+        public static readonly BindableProperty DataSeriesProperty = BindableProperty.Create("DataSeries", typeof(IDataSeries), typeof(SciChartSurface), null, BindingMode.Default, null, OnDataSeriesPropertyChanged, null, null, null);        
+
+        static CrossPlatformRenderableSeriesBase()
+        {
+            Factory = DependencyService.Get<IRenderableSeriesFactory>();
+            if (Factory == null)
+            {
+                throw new InvalidOperationException(
+                    "Cannot get Dependency IRenderableSeriesFactory. Have you registered the dependency via attribute [assembly: Xamarin.Forms.Dependency(typeof(RenderableSeriesFactory))] in your application?");
+            }
+        }
 
         public string XAxisId
         {

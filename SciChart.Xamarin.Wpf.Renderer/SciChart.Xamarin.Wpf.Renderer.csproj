@@ -86,10 +86,10 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="DependencyService\DataSeriesFactory.cs" />
+    <Compile Include="DependencyService\DataSeriesFactoryWpf.cs" />
     <Compile Include="DependencyService\FastLineRenderableSeriesWpf.cs" />
     <Compile Include="DependencyService\RenderableSeriesCollectionWpf.cs" />
-    <Compile Include="DependencyService\RenderableSeriesFactory.cs" />
+    <Compile Include="DependencyService\RenderableSeriesFactoryWpf.cs" />
     <Compile Include="DependencyService\XyDataSeriesWpf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

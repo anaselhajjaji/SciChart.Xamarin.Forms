@@ -9,8 +9,7 @@ namespace SciChart.Xamarin.Views.Model.DataSeries
         where TX:IComparable
         where TY:IComparable
     {
-        private static readonly IDataSeriesFactory Factory = DependencyService.Get<IDataSeriesFactory>();
-
+        
         public XyDataSeries()
         {
             InnerSeries = Factory.NewXyDataSeries<TX, TY>();

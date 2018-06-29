@@ -19,7 +19,7 @@ using SciChart.Xamarin.Views.Model.DataSeries;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
-    public class DataSeriesFactory : IDataSeriesFactory
+    public class DataSeriesFactoryWpf : IDataSeriesFactory
     {
         public Views.Model.DataSeries.IXyDataSeries<TX, TY> NewXyDataSeries<TX, TY>() where TX : IComparable where TY : IComparable
         {
