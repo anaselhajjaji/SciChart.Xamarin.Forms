@@ -10,25 +10,22 @@ using SciChart.Drawing.Canvas;
 using SciChart.Drawing.OpenGL;
 using SciChart.Xamarin.Android.Renderer;
 using SciChart.Xamarin.Views;
+using SciChart.Xamarin.Views.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using SciChartSurfaceX = SciChart.Xamarin.Views.Visuals.SciChartSurface;
 
-[assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChartSurfaceAndroidRenderer))]
+[assembly: ExportRenderer(typeof(SciChartSurfaceX), typeof(SciChartSurfaceAndroidRenderer))]
 
 namespace SciChart.Xamarin.Android.Renderer
 {
-    public class SciChartSurfaceAndroidRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.Charting.Visuals.SciChartSurface>
+    public class SciChartSurfaceAndroidRenderer : ViewRenderer<SciChartSurfaceX, SciChartSurface>
     {
-        private readonly Dictionary<string, Action<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.Charting.Visuals.SciChartSurface>> _propertyMap;
+        private PropertyMapper<SciChartSurfaceX, SciChartSurface> _propertyMapper;
         
         public SciChartSurfaceAndroidRenderer(Context context) : base(context) 
         {
-            _propertyMap = new Dictionary<string, Action<Views.Visuals.SciChartSurface, SciChartSurface>>
-            {
-                {"Width", OnWidthChanged},
-                {"Height", OnHeightChanged}
-            };
-
+            // Apply license 
             var license = SciChartLicenseManager.GetLicense(SciChartPlatform.Android);
             if (license != null)
             {
@@ -38,17 +35,18 @@ namespace SciChart.Xamarin.Android.Renderer
 
         protected override void OnElementChanged(ElementChangedEventArgs<Views.Visuals.SciChartSurface> e)
         {
-            var sciChartSurfaceView = e.NewElement as SciChart.Xamarin.Views.Visuals.SciChartSurface;
             if (Control == null)
             {
+                // Create the native control 
                 this.SetNativeControl(new SciChartSurface(Context));
                 Control.RenderSurface = new RenderSurface(Context);
-                
-                // Some dummy data 
+
+                // Setup the property mapper 
+                _propertyMapper = new PropertyMapper<SciChartSurfaceX, SciChartSurface>(Control);
+
+                // Some dummy params. TODO Remove these
                 Control.XAxes.Add(new NumericAxis(Context));
-                Control.YAxes.Add(new NumericAxis(Context));
-                //Control.XAxes[0].VisibleRange = new DoubleRange(0, 10);
-                //Control.YAxes[0].VisibleRange = new DoubleRange(0, 10);
+                Control.YAxes.Add(new NumericAxis(Context));                
             }
 
             base.OnElementChanged(e);
@@ -56,22 +54,8 @@ namespace SciChart.Xamarin.Android.Renderer
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (_propertyMap.TryGetValue(e.PropertyName, out var handler))
-            {
-                var sciChartSurfaceView = sender as SciChart.Xamarin.Views.Visuals.SciChartSurface;
-                handler(sciChartSurfaceView, Control);
-            }
+            _propertyMapper?.OnElementPropertyChanged(sender, e);   
             base.OnElementPropertyChanged(sender, e);
-        }
-
-        private void OnWidthChanged(Views.Visuals.SciChartSurface scsView, SciChartSurface scsAndroid)
-        {
-            //scsAndroid.LayoutParameters.Width = (int) scsView.Width;
-        }
-
-        private void OnHeightChanged(Views.Visuals.SciChartSurface scsView, SciChartSurface scsAndroid)
-        {
-            //scsAndroid.LayoutParameters.Height = (int)scsView.Height;
         }
     }
 }

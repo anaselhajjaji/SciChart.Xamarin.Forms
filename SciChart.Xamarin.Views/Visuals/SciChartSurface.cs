@@ -1,6 +1,9 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Text;
 using SciChart.Xamarin.Views.Visuals.Annotations;
+using SciChart.Xamarin.Views.Visuals.RenderableSeries;
 using Xamarin.Forms;
 
 namespace SciChart.Xamarin.Views.Visuals
@@ -40,7 +43,7 @@ namespace SciChart.Xamarin.Views.Visuals
         /// <summary>
         /// Defines the RenderableSeries BindableProperty
         /// </summary>
-        public static readonly BindableProperty RenderableSeriesProperty = BindableProperty.Create("RenderableSeries", typeof(ObservableCollection<IRenderableSeries>), typeof(SciChartSurface), null, BindingMode.Default, null, null, null, null, (s) => new ObservableCollection<IRenderableSeries>());
+        public static readonly BindableProperty RenderableSeriesProperty = BindableProperty.Create("RenderableSeries", typeof(ObservableCollection<IRenderableSeries>), typeof(SciChartSurface), null, BindingMode.Default, null, null, OnRenderableSeriesBindingPropertyChanged, null, (s) => new ObservableCollection<IRenderableSeries>());        
 
         /// <summary>
         /// Defines the RenderableSeries BindableProperty
@@ -85,6 +88,11 @@ namespace SciChart.Xamarin.Views.Visuals
         {
             get => (ObservableCollection<IAnnotation>)GetValue(AnnotationsProperty);
             set => SetValue(AnnotationsProperty, value);
+        }
+
+        private static void OnRenderableSeriesBindingPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            var sciChartSurface = ((SciChartSurface)bindable);
         }
     }
 }

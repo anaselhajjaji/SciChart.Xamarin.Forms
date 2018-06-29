@@ -14,19 +14,14 @@ namespace TestApp.UI
 		{
 			InitializeComponent();
 
-		    var factory = DependencyService.Get<IDataSeriesFactory>();
-		    var dataSeries = factory.NewXyDataSeries<double, double>();
+		    var dataSeries = new XyDataSeries<double, double>();
 
-		    dataSeries.Append(0, 1);
-		    dataSeries.Append(1, 2);
+		    for (int i = 0; i < 100; i++)
+		    {
+		        dataSeries.Append(i, Math.Sin(i*0.05));
+		    }
 
-//		    var xValues = dataSeries.XValues;
-//		    var yValues = dataSeries.YValues;
-//
-//		    for (int i = 0; i < dataSeries.Count; i++)
-//		    {
-//		        Console.WriteLine("XValue[{0}]: {1}, YValue[{0}]: {2}", i, xValues[i], yValues[i]);
-//		    }
-        }
+		    LineSeries.DataSeries = dataSeries;
+		}
 	}
 }

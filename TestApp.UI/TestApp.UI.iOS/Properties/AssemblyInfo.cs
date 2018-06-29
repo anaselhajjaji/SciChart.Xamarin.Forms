@@ -36,5 +36,5 @@ using Xamarin.Forms;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-[assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChart.Xamarin.iOS.Renderer.SciChartSurfaceIOSRenderer))]
+[assembly: ExportRenderer(typeof(SciChart.Xamarin.Views.Visuals.SciChartSurface), typeof(SciChart.Xamarin.iOS.Renderer.SciChartSurfaceIosRenderer))]
 [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.iOS.Renderer.DependencyService.DataSeriesFactory))]

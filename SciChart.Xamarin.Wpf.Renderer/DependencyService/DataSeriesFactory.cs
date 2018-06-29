@@ -19,18 +19,11 @@ using SciChart.Xamarin.Views.Model.DataSeries;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
-    public class XyDataSeries<TX, TY> : SciChart.Charting.Model.DataSeries.XyDataSeries<TX, TY>, Views.Model.DataSeries.IXyDataSeries<TX, TY>
-        where TY : IComparable
-        where TX : IComparable
-    {
-    }
-
-
     public class DataSeriesFactory : IDataSeriesFactory
     {
         public Views.Model.DataSeries.IXyDataSeries<TX, TY> NewXyDataSeries<TX, TY>() where TX : IComparable where TY : IComparable
         {
-            return new XyDataSeries<TX, TY>();
+            return new XyDataSeriesWpf<TX, TY>();
         }
     }
 }

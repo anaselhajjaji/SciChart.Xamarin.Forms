@@ -2,15 +2,20 @@
 using SciChart.iOS.Charting;
 using SciChart.Xamarin.iOS.Renderer;
 using SciChart.Xamarin.Views;
+using SciChart.Xamarin.Views.Helpers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
+using SciChartSurfaceX = SciChart.Xamarin.Views.Visuals.SciChartSurface;
 
 namespace SciChart.Xamarin.iOS.Renderer
 {
-    public class SciChartSurfaceIOSRenderer : ViewRenderer<SciChart.Xamarin.Views.Visuals.SciChartSurface, SciChart.iOS.Charting.SCIChartSurface>
+    public class SciChartSurfaceIosRenderer : ViewRenderer<SciChartSurfaceX, SCIChartSurface>
     {
-        public SciChartSurfaceIOSRenderer()
+        private PropertyMapper<SciChartSurfaceX, SCIChartSurface> _propertyMapper;
+
+        public SciChartSurfaceIosRenderer()
         {
+            // Apply license
             var license = SciChartLicenseManager.GetLicense(SciChartPlatform.iOS);
             if (license != null)
             {
@@ -21,16 +26,17 @@ namespace SciChart.Xamarin.iOS.Renderer
         // Note Crashes before any breakpoints hit 
         protected override void OnElementChanged(ElementChangedEventArgs<SciChart.Xamarin.Views.Visuals.SciChartSurface> e)
         {
-            var sciChartSurfaceView = e.NewElement as SciChart.Xamarin.Views.Visuals.SciChartSurface;
             if (Control == null)
             {
+                // Create the native control
                 this.SetNativeControl(new SCIChartSurface());
 
-                // Some dummy data 
+                // Set property mapper
+                _propertyMapper = new PropertyMapper<SciChartSurfaceX, SCIChartSurface>(Control);
+
+                // Some dummy data TODO Remove 
                 Control.XAxes.Add(new SCINumericAxis());
                 Control.YAxes.Add(new SCINumericAxis());
-                Control.XAxes[0].VisibleRange = new SCIDoubleRange(0, 10);
-                Control.YAxes[0].VisibleRange = new SCIDoubleRange(0, 10);
             }
 
             base.OnElementChanged(e);
@@ -38,6 +44,7 @@ namespace SciChart.Xamarin.iOS.Renderer
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            _propertyMapper?.OnElementPropertyChanged(sender, e);
             base.OnElementPropertyChanged(sender, e);
         }
     }

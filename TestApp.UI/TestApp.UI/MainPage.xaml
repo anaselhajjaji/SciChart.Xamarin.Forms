@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TestApp.UI"
              xmlns:visuals="clr-namespace:SciChart.Xamarin.Views.Visuals;assembly=SciChart.Xamarin.Views"
+             xmlns:renderableSeries="clr-namespace:SciChart.Xamarin.Views.Visuals.RenderableSeries;assembly=SciChart.Xamarin.Views"
              x:Class="TestApp.UI.MainPage">
 
     <Grid>
@@ -14,7 +15,12 @@
             <Label Text="Hello Xamarin.Forms world!"></Label>
         </StackLayout>
 
-        <visuals:SciChartSurface Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill"/>
+        <visuals:SciChartSurface Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill">
+            <visuals:SciChartSurface.RenderableSeries>
+                <renderableSeries:FastLineRenderableSeries x:Name="LineSeries" Stroke="#FF3333" StrokeThickness="2"/>
+            </visuals:SciChartSurface.RenderableSeries>
+        </visuals:SciChartSurface>
     </Grid>
 
 </ContentPage>
+
