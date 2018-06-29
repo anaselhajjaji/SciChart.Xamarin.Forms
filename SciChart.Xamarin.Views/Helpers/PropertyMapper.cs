@@ -27,5 +27,14 @@ namespace SciChart.Xamarin.Views.Helpers
                 handler(sourceControl, _targetControl);
             }
         }
+
+        public void Init(TSource sourceControl)
+        {
+            foreach (var key in Keys)
+            {
+                var handler = this[key];
+                handler(sourceControl, _targetControl);
+            }
+        }
     }
 }

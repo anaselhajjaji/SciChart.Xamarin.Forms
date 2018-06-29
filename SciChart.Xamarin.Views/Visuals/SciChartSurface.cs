@@ -43,7 +43,7 @@ namespace SciChart.Xamarin.Views.Visuals
         /// <summary>
         /// Defines the RenderableSeries BindableProperty
         /// </summary>
-        public static readonly BindableProperty RenderableSeriesProperty = BindableProperty.Create("RenderableSeries", typeof(ObservableCollection<IRenderableSeries>), typeof(SciChartSurface), null, BindingMode.Default, null, null, OnRenderableSeriesBindingPropertyChanged, null, (s) => new ObservableCollection<IRenderableSeries>());        
+        public static readonly BindableProperty RenderableSeriesProperty = BindableProperty.Create("RenderableSeries", typeof(ObservableCollection<IRenderableSeries>), typeof(SciChartSurface), null, BindingMode.Default, null, null, null, null, (s) => new ObservableCollection<IRenderableSeries>());        
 
         /// <summary>
         /// Defines the RenderableSeries BindableProperty
@@ -80,19 +80,14 @@ namespace SciChart.Xamarin.Views.Visuals
 
         public ObservableCollection<IRenderableSeries> RenderableSeries
         {
-            get => (ObservableCollection<IRenderableSeries>)GetValue(XAxesProperty);
-            set => SetValue(XAxesProperty, value);
+            get => (ObservableCollection<IRenderableSeries>)GetValue(RenderableSeriesProperty);
+            set => SetValue(RenderableSeriesProperty, value);
         }
 
         public ObservableCollection<IAnnotation> Annotations
         {
             get => (ObservableCollection<IAnnotation>)GetValue(AnnotationsProperty);
             set => SetValue(AnnotationsProperty, value);
-        }
-
-        private static void OnRenderableSeriesBindingPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
-        {
-            var sciChartSurface = ((SciChartSurface)bindable);
         }
     }
 }

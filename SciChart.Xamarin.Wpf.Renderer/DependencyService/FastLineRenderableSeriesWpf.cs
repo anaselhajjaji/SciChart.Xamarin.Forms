@@ -5,13 +5,15 @@ using SciChart.Xamarin.Views.Visuals.RenderableSeries;
 using SciChart.Xamarin.Wpf.Renderer.Utility;
 using Xamarin.Forms;
 using FastLineRenderableSeries = SciChart.Charting.Visuals.RenderableSeries.FastLineRenderableSeries;
-using IDataSeries = SciChart.Xamarin.Views.Model.DataSeries.IDataSeries;
+using IDataSeriesX = SciChart.Xamarin.Views.Model.DataSeries.IDataSeries;
+
+
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
     internal class FastLineRenderableSeriesWpf : FastLineRenderableSeries, IFastLineRenderableSeries
     {
-        private IDataSeries _dataSeries;
+        private IDataSeriesX _dataSeries;
 
         public FastLineRenderableSeriesWpf()
         {
@@ -23,7 +25,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
             set => base.Stroke = ColorUtil.FromXamarinColor(value);
         }
 
-        IDataSeries IRenderableSeries.DataSeries
+        IDataSeriesX IRenderableSeries.DataSeries
         {
             get => _dataSeries;
             set

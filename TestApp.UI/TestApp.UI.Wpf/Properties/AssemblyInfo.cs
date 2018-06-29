@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 using SciChart.Xamarin.Wpf.Renderer;
+using SciChart.Xamarin.Wpf.Renderer.ViewRenderers;
 using Xamarin.Forms.Platform.WPF;
 
 // General Information about an assembly is controlled through the following
