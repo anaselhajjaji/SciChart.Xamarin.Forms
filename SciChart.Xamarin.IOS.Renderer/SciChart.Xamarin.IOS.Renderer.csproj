@@ -62,7 +62,11 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
-    <Compile Include="DependencyService\DataSeriesFactory.cs" />
+    <Compile Include="DependencyService\DataSeriesFactoryiOS.cs" />
+    <Compile Include="DependencyService\FastLineRenderableSeriesiOS.cs" />
+    <Compile Include="DependencyService\RenderableSeriesCollectioniOS.cs" />
+    <Compile Include="DependencyService\RenderableSeriesFactoryiOS.cs" />
+    <Compile Include="DependencyService\XyDataSeriesiOS.cs" />
     <Compile Include="SciChartSurfaceIOSRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

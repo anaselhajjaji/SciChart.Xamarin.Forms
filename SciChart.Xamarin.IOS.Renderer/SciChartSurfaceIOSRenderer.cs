@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using SciChart.iOS.Charting;
 using SciChart.Xamarin.iOS.Renderer;
+using SciChart.Xamarin.iOS.Renderer.DependencyService;
 using SciChart.Xamarin.Views;
 using SciChart.Xamarin.Views.Helpers;
 using Xamarin.Forms;
@@ -12,14 +13,18 @@ namespace SciChart.Xamarin.iOS.Renderer
     public class SciChartSurfaceIosRenderer : ViewRenderer<SciChartSurfaceX, SCIChartSurface>
     {
         private PropertyMapper<SciChartSurfaceX, SCIChartSurface> _propertyMapper;
+        private readonly string _license;
 
         public SciChartSurfaceIosRenderer()
         {
-            // Apply license
-            var license = SciChartLicenseManager.GetLicense(SciChartPlatform.iOS);
-            if (license != null)
+            // Apply license 
+            if (_license == null)
             {
-                SCIChartSurface.SetRuntimeLicenseKey(license);
+                _license = SciChartLicenseManager.GetLicense(SciChartPlatform.iOS);
+                if (_license != null)
+                {
+                    SCIChartSurface.SetRuntimeLicenseKey(_license);
+                }
             }
         }
 
@@ -33,6 +38,8 @@ namespace SciChart.Xamarin.iOS.Renderer
 
                 // Set property mapper
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SCIChartSurface>(Control);
+                _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
+                _propertyMapper.Init(e.NewElement);
 
                 // Some dummy data TODO Remove 
                 Control.XAxes.Add(new SCINumericAxis());
@@ -46,6 +53,11 @@ namespace SciChart.Xamarin.iOS.Renderer
         {
             _propertyMapper?.OnElementPropertyChanged(sender, e);
             base.OnElementPropertyChanged(sender, e);
+        }
+
+        private void OnRenderableSeriesChanged(SciChartSurfaceX source, SCIChartSurface target)
+        {
+            target.RenderableSeries = new RenderableSeriesCollectioniOS(source.RenderableSeries);
         }
     }
 }
