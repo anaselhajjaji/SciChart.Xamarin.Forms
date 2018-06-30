@@ -6,6 +6,7 @@ using IDataSeriesX = SciChart.Xamarin.Views.Model.DataSeries.IDataSeries;
 
 namespace SciChart.Xamarin.iOS.Renderer.DependencyService
 {
+    [Foundation.Register]
     public class FastLineRenderableSeriesiOS : SCIFastLineRenderableSeries, IFastLineRenderableSeries
     {
         private IDataSeriesX _dataSeries;

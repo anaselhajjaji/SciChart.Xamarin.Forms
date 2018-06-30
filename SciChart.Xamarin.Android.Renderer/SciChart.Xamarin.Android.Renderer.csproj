@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SciChart.Xamarin.Views\SciChart.Xamarin.Views.csproj">
-      <Project>{aad5ff41-4c68-4fe0-9512-2aa8bbf3bacc}</Project>
+      <Project>{BB9C0929-F674-408E-9A1A-C58334248E7A}</Project>
       <Name>SciChart.Xamarin.Views</Name>
     </ProjectReference>
   </ItemGroup>

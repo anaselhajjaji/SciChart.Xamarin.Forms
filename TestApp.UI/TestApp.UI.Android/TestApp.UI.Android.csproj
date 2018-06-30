@@ -96,11 +96,11 @@
       <Name>SciChart.Xamarin.Android.Renderer</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\SciChart.Xamarin.Views\SciChart.Xamarin.Views.csproj">
-      <Project>{aad5ff41-4c68-4fe0-9512-2aa8bbf3bacc}</Project>
+      <Project>{BB9C0929-F674-408E-9A1A-C58334248E7A}</Project>
       <Name>SciChart.Xamarin.Views</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestApp.UI\TestApp.UI.csproj">
-      <Project>{43598D7D-08C4-42EE-9E26-9FAB47A74CCD}</Project>
+      <Project>{14446983-6098-4D21-8747-8C566B1C2D36}</Project>
       <Name>TestApp.UI</Name>
     </ProjectReference>
   </ItemGroup>
