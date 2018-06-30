@@ -36,6 +36,8 @@ namespace SciChart.Xamarin.iOS.Renderer
                 // Create the native control
                 this.SetNativeControl(new SCIChartSurface());
 
+                Control.TranslatesAutoresizingMaskIntoConstraints = true;
+
                 // Set property mapper
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SCIChartSurface>(Control);
                 _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);

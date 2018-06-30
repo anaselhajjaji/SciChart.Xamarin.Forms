@@ -13,6 +13,7 @@
         </Grid.RowDefinitions>
         <StackLayout Orientation="Vertical" Grid.Row="0">
             <Label Text="Hello Xamarin.Forms world!"></Label>
+            <Label Text="This is a test ..."/>
         </StackLayout>
 
         <visuals:SciChartSurface Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill">
@@ -23,4 +24,6 @@
     </Grid>
 
 </ContentPage>
+
+
 
