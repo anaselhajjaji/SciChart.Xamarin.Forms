@@ -42,6 +42,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
                 // Setup property mapper 
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SciChartSurface>(Control);
                 _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
+                _propertyMapper.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s,d) => d.ChartTitle = s.ChartTitle);
                 _propertyMapper.Init(e.NewElement);
 
                 // Some dummy data 

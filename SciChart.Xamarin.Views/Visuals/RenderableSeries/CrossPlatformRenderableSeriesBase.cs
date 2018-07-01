@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using SciChart.Xamarin.Views.Model.DataSeries;
 using Xamarin.Forms;
 
@@ -40,7 +41,15 @@ namespace SciChart.Xamarin.Views.Visuals.RenderableSeries
             {
                 throw new InvalidOperationException(
                     "Cannot get Dependency IRenderableSeriesFactory. Have you registered the dependency via attribute [assembly: Xamarin.Forms.Dependency(typeof(RenderableSeriesFactory))] in your application?");
-            }
+            }            
+        }
+
+        protected CrossPlatformRenderableSeriesBase()
+        {
+            this.BindingContextChanged += (s, e) =>
+            {
+                Debug.WriteLine("Binding Context changed for " + GetType().Name);
+            };
         }
 
         public string XAxisId

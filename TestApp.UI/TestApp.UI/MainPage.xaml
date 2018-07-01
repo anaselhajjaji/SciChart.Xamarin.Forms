@@ -16,9 +16,9 @@
             <Label Text="This is a test ..."/>
         </StackLayout>
 
-        <visuals:SciChartSurface Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill">
+        <visuals:SciChartSurface Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" ChartTitle="{Binding ChartTitle}">
             <visuals:SciChartSurface.RenderableSeries>
-                <renderableSeries:FastLineRenderableSeries x:Name="LineSeries" Stroke="#FF3333" StrokeThickness="2"/>
+                <renderableSeries:FastLineRenderableSeries DataSeries="{Binding LineSeries}" Stroke="{Binding Stroke}" StrokeThickness="{Binding StrokeThickness}"/>
             </visuals:SciChartSurface.RenderableSeries>
         </visuals:SciChartSurface>
     </Grid>

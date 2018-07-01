@@ -49,6 +49,7 @@ namespace SciChart.Xamarin.Android.Renderer
                 // Setup the property mapper 
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SciChartSurface>(Control);
                 _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
+                _propertyMapper.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => { }); // TODO: ChartTitle not supported in android
                 _propertyMapper.Init(e.NewElement);
 
                 // Some dummy params. TODO Remove these

@@ -41,6 +41,7 @@ namespace SciChart.Xamarin.iOS.Renderer
                 // Set property mapper
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SCIChartSurface>(Control);
                 _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
+                _propertyMapper.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => d.ChartTitle = s.ChartTitle);
                 _propertyMapper.Init(e.NewElement);
 
                 // Some dummy data TODO Remove 

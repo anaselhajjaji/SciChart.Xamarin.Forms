@@ -13,15 +13,7 @@ namespace TestApp.UI
 		public MainPage()
 		{
 			InitializeComponent();
-
-		    var dataSeries = new XyDataSeries<double, double>();
-
-		    for (int i = 0; i < 100; i++)
-		    {
-		        dataSeries.Append(i, Math.Sin(i*0.05));
-		    }
-
-		    LineSeries.DataSeries = dataSeries;
+		    this.BindingContext = new MainViewModel();            
 		}
 	}
 }
