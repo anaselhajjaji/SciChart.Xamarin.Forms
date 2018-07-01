@@ -69,6 +69,7 @@
     <Compile Include="DependencyService\XyDataSeriesiOS.cs" />
     <Compile Include="SciChartSurfaceIOSRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\ColorUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SciChart.Xamarin.Views\SciChart.Xamarin.Views.csproj">

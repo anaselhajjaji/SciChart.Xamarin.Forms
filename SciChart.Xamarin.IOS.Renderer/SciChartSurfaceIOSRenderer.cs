@@ -1,7 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using SciChart.iOS.Charting;
 using SciChart.Xamarin.iOS.Renderer;
 using SciChart.Xamarin.iOS.Renderer.DependencyService;
+using SciChart.Xamarin.iOS.Renderer.Utility;
 using SciChart.Xamarin.Views;
 using SciChart.Xamarin.Views.Helpers;
 using Xamarin.Forms;
@@ -41,7 +43,9 @@ namespace SciChart.Xamarin.iOS.Renderer
                 // Set property mapper
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SCIChartSurface>(Control);
                 _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
-                _propertyMapper.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => d.ChartTitle = s.ChartTitle);
+                _propertyMapper.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => { d.ChartTitle = s.ChartTitle; });
+                _propertyMapper.Add(SciChartSurfaceX.BackgroundColorProperty.PropertyName, UpdateChartStyle);
+                _propertyMapper.Add(SciChartSurfaceX.ForegroundColorProperty.PropertyName, UpdateChartStyle);
                 _propertyMapper.Init(e.NewElement);
 
                 // Some dummy data TODO Remove 
@@ -50,7 +54,7 @@ namespace SciChart.Xamarin.iOS.Renderer
             }
 
             base.OnElementChanged(e);
-        }
+        }        
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
@@ -61,6 +65,13 @@ namespace SciChart.Xamarin.iOS.Renderer
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SCIChartSurface target)
         {
             target.RenderableSeries = new RenderableSeriesCollectioniOS(source.RenderableSeries);
+        }
+
+        private void UpdateChartStyle(SciChartSurfaceX source, SCIChartSurface target)
+        {
+            target.ChartTitleColor = ColorUtil.FromXamarinColor(source.ForegroundColor);
+            target.BackgroundColor = ColorUtil.FromXamarinColor(source.BackgroundColor);
+            target.Opaque = Math.Abs(source.BackgroundColor.A - 1.0) < 0.01;
         }
     }
 }

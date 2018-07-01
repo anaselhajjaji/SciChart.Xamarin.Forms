@@ -61,6 +61,11 @@ namespace SciChart.Xamarin.Views.Visuals
         /// </summary>
         public static readonly BindableProperty ChartTitleProperty = BindableProperty.Create("ChartTitle", typeof(string), typeof(SciChartSurface), null, BindingMode.Default, null, null, null, null, null);
 
+        /// <summary>
+        /// Defines the YAxes BindableProperty
+        /// </summary>
+        public static readonly BindableProperty ForegroundColorProperty = BindableProperty.Create("ForegroundColor", typeof(Color), typeof(SciChartSurface), Color.White, BindingMode.Default, null, null, null, null, null);
+
         public SciChartSurface()
         {
             this.BindingContextChanged += (s, e) => PropagateBindingContext();
@@ -106,6 +111,12 @@ namespace SciChart.Xamarin.Views.Visuals
         {
             get => (string)GetValue(ChartTitleProperty);
             set => SetValue(ChartTitleProperty, value);
+        }
+
+        public Color ForegroundColor
+        {
+            get => (Color)GetValue(ForegroundColorProperty);
+            set => SetValue(ForegroundColorProperty, value);
         }
 
         private static void OnRenderableSeriesCollectionPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)

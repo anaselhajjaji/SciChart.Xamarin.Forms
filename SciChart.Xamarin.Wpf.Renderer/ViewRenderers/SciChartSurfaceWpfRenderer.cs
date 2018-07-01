@@ -1,11 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Windows.Media;
 using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Data.Model;
 using SciChart.Xamarin.Views;
 using SciChart.Xamarin.Views.Helpers;
 using SciChart.Xamarin.Wpf.Renderer.DependencyService;
+using SciChart.Xamarin.Wpf.Renderer.Utility;
 using Xamarin.Forms.Platform.WPF;
 using SciChartSurfaceX = SciChart.Xamarin.Views.Visuals.SciChartSurface;
 
@@ -43,6 +45,8 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
                 _propertyMapper = new PropertyMapper<SciChartSurfaceX, SciChartSurface>(Control);
                 _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
                 _propertyMapper.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s,d) => d.ChartTitle = s.ChartTitle);
+                _propertyMapper.Add(SciChartSurfaceX.BackgroundColorProperty.PropertyName, (s, d) => d.Background = new SolidColorBrush(ColorUtil.FromXamarinColor(s.BackgroundColor)));
+                _propertyMapper.Add(SciChartSurfaceX.ForegroundColorProperty.PropertyName, (s, d) => d.Foreground = new SolidColorBrush(ColorUtil.FromXamarinColor(s.ForegroundColor)));                
                 _propertyMapper.Init(e.NewElement);
 
                 // Some dummy data 
