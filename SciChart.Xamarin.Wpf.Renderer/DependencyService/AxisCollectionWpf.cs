@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using SciChart.Charting.Visuals.RenderableSeries;
+using SciChart.Charting.Model;
 using SciChart.Xamarin.Views.Helpers;
+using SciChart.Xamarin.Views.Visuals.Axes;
 using SciChart.Xamarin.Views.Visuals.RenderableSeries;
-using IRenderableSeries = SciChart.Xamarin.Views.Visuals.RenderableSeries.IRenderableSeries;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
-{    
-    public class RenderableSeriesCollectionWpf : ObservableCollection<SciChart.Charting.Visuals.RenderableSeries.IRenderableSeries>
+{
+    public class AxisCollectionWpf : AxisCollection
     {
-        private readonly ObservableCollection<IRenderableSeries> _crossPlatformSeries;
+        private readonly ObservableCollection<IAxis> _crossPlatformSeries;
 
-        public RenderableSeriesCollectionWpf(ObservableCollection<IRenderableSeries> crossPlatformSeries)
+        public AxisCollectionWpf(ObservableCollection<IAxis> crossPlatformSeries)
         {
             _crossPlatformSeries = crossPlatformSeries;
             _crossPlatformSeries.CollectionChanged += OnCollectionChanged;
@@ -25,7 +24,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
             this.Clear();
             foreach (var item in _crossPlatformSeries)
             {
-                this.Add((SciChart.Charting.Visuals.RenderableSeries.IRenderableSeries)((CrossPlatformRenderableSeriesBase)item).InnerSeries);
+                this.Add((SciChart.Charting.Visuals.Axes.IAxis)((AxisCore)item).InnerAxis);
             }
         }
 

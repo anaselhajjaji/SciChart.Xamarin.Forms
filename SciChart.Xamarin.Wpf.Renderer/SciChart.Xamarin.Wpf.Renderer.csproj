@@ -86,8 +86,11 @@
     <Compile Include="..\AssemblyInfoCommon.cs">
       <Link>Properties\AssemblyInfoCommon.cs</Link>
     </Compile>
+    <Compile Include="DependencyService\AxisCollectionWpf.cs" />
+    <Compile Include="DependencyService\AxisFactoryWpf.cs" />
     <Compile Include="DependencyService\DataSeriesFactoryWpf.cs" />
     <Compile Include="DependencyService\FastLineRenderableSeriesWpf.cs" />
+    <Compile Include="DependencyService\NumericAxisWpf.cs" />
     <Compile Include="DependencyService\RenderableSeriesCollectionWpf.cs" />
     <Compile Include="DependencyService\RenderableSeriesFactoryWpf.cs" />
     <Compile Include="DependencyService\XyDataSeriesWpf.cs" />
@@ -104,6 +107,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utility\AxisHelper.cs" />
     <Compile Include="ViewRenderers\SciChartSurfaceWpfPropertyMapper.cs" />
     <Compile Include="ViewRenderers\SciChartSurfaceWpfRenderer.cs" />
     <Compile Include="Utility\ColorUtil.cs" />

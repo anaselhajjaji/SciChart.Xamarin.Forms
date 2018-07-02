@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:TestApp.UI"
              xmlns:visuals="clr-namespace:SciChart.Xamarin.Views.Visuals;assembly=SciChart.Xamarin.Views"
              xmlns:renderableSeries="clr-namespace:SciChart.Xamarin.Views.Visuals.RenderableSeries;assembly=SciChart.Xamarin.Views"
+             xmlns:axes="clr-namespace:SciChart.Xamarin.Views.Visuals.Axes;assembly=SciChart.Xamarin.Views"
              x:Class="TestApp.UI.MainPage">
 
     <Grid>
@@ -22,6 +23,15 @@
             <visuals:SciChartSurface.RenderableSeries>
                 <renderableSeries:FastLineRenderableSeries DataSeries="{Binding LineSeries}" Stroke="{Binding LineStroke}" StrokeThickness="{Binding StrokeThickness}"/>
             </visuals:SciChartSurface.RenderableSeries>
+
+            <visuals:SciChartSurface.XAxes>
+                <axes:NumericAxis/>
+            </visuals:SciChartSurface.XAxes>
+
+            <visuals:SciChartSurface.YAxes>
+                <axes:NumericAxis/>
+            </visuals:SciChartSurface.YAxes>
+
         </visuals:SciChartSurface>
     </Grid>
 

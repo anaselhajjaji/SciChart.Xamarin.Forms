@@ -2,6 +2,6 @@
 {
     public interface IAnnotation
     {        
-
+        object BindingContext { get; set; }
     }
 }

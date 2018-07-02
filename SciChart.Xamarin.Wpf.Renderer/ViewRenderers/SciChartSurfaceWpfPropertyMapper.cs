@@ -19,14 +19,28 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
             this.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => d.ChartTitle = s.ChartTitle);
             this.Add(SciChartSurfaceX.BackgroundColorProperty.PropertyName, (s, d) => d.Background = new SolidColorBrush(ColorUtil.FromXamarinColor(s.BackgroundColor)));
             this.Add(SciChartSurfaceX.ForegroundColorProperty.PropertyName, (s, d) => d.Foreground = new SolidColorBrush(ColorUtil.FromXamarinColor(s.ForegroundColor)));
+            this.Add(SciChartSurfaceX.XAxesProperty.PropertyName, OnXAxesChanged);
+            this.Add(SciChartSurfaceX.YAxesProperty.PropertyName, OnYAxesChanged);
 
             this.Init(sourceControl);
-        }
+        }        
 
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
             (target.RenderableSeries as IDisposable)?.Dispose();
             target.RenderableSeries = new RenderableSeriesCollectionWpf(source.RenderableSeries);
+        }
+
+        private void OnXAxesChanged(SciChartSurfaceX source, SciChartSurface target)
+        {
+            (target.RenderableSeries as IDisposable)?.Dispose();
+            target.XAxes = new AxisCollectionWpf(source.XAxes);
+        }
+
+        private void OnYAxesChanged(SciChartSurfaceX source, SciChartSurface target)
+        {
+            (target.RenderableSeries as IDisposable)?.Dispose();
+            target.YAxes = new AxisCollectionWpf(source.YAxes);
         }
     }
 }

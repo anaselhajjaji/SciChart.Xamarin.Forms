@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using SciChart.Xamarin.Views.Model.DataSeries;
+using SciChart.Xamarin.Views.Visuals.Axes;
 using Xamarin.Forms;
 
 namespace SciChart.Xamarin.Views.Visuals.RenderableSeries
 {
     public abstract class CrossPlatformRenderableSeriesBase : View, IRenderableSeries
     {
-        private static readonly IRenderableSeriesFactory Factory;
+        protected static readonly IRenderableSeriesFactory Factory;
 
         /// <summary>
         /// Defines the XAxisId BindableProperty

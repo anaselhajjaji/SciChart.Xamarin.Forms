@@ -1,4 +1,5 @@
-﻿using SciChart.Xamarin.Views.Visuals.RenderableSeries;
+﻿using System;
+using SciChart.Xamarin.Views.Visuals.RenderableSeries;
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
 {
