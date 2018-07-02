@@ -53,6 +53,7 @@
     <Compile Include="DependencyService\RenderableSeriesCollectionAndroid.cs" />
     <Compile Include="DependencyService\RenderableSeriesFactoryAndroid.cs" />
     <Compile Include="DependencyService\XyDataSeriesWpf.cs" />
+    <Compile Include="SciChartSurfaceAndroidPropertyMapper.cs" />
     <Compile Include="SciChartSurfaceAndroidRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

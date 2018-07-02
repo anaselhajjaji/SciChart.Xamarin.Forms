@@ -124,6 +124,7 @@ namespace SciChart.Xamarin.Views.Visuals
             var scs = ((SciChartSurface) bindable);
             var oldCollection = oldvalue as ObservableCollection<IRenderableSeries>;
             var newCollection = newvalue as ObservableCollection<IRenderableSeries>;
+
             if (oldCollection != null)
             {
                 oldCollection.CollectionChanged -= scs.OnRenderableSeriesCollectionChanged;

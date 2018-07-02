@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Android.Content;
 using Java.Util;
@@ -9,7 +8,6 @@ using SciChart.Data.Model;
 using SciChart.Drawing.Canvas;
 using SciChart.Drawing.OpenGL;
 using SciChart.Xamarin.Android.Renderer;
-using SciChart.Xamarin.Android.Renderer.DependencyService;
 using SciChart.Xamarin.Views;
 using SciChart.Xamarin.Views.Helpers;
 using Xamarin.Forms;
@@ -47,10 +45,7 @@ namespace SciChart.Xamarin.Android.Renderer
                 Control.RenderSurface = new RenderSurface(Context);
 
                 // Setup the property mapper 
-                _propertyMapper = new PropertyMapper<SciChartSurfaceX, SciChartSurface>(Control);
-                _propertyMapper.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
-                _propertyMapper.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => { }); // TODO: ChartTitle not supported in android
-                _propertyMapper.Init(e.NewElement);
+                _propertyMapper = new SciChartSurfaceAndroidPropertyMapper(e.NewElement, Control);                
 
                 // Some dummy params. TODO Remove these
                 Control.XAxes.Add(new NumericAxis(Context));
@@ -64,12 +59,6 @@ namespace SciChart.Xamarin.Android.Renderer
         {
             _propertyMapper?.OnElementPropertyChanged(sender, e);   
             base.OnElementPropertyChanged(sender, e);
-        }
-
-        private void OnRenderableSeriesChanged(SciChartSurfaceX source, SciChartSurface target)
-        {
-            (target.RenderableSeries as IDisposable)?.Dispose();
-            target.RenderableSeries = new RenderableSeriesCollectionAndroid(source.RenderableSeries);
         }
     }
 }

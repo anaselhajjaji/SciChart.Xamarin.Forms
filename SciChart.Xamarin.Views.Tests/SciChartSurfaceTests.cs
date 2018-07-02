@@ -37,6 +37,8 @@ namespace SciChart.Xamarin.Views.Tests
             // Set binding context after series add 
             scs.BindingContext = "ABindingContext";
 
+
+
             Assert.That(rs.BindingContext, Is.EqualTo("ABindingContext"));
         }
 
@@ -49,6 +51,20 @@ namespace SciChart.Xamarin.Views.Tests
 
             // Set binding context then series add
             scs.RenderableSeries = new ObservableCollection<IRenderableSeries>(new [] { rs });
+
+            Assert.That(rs.BindingContext, Is.EqualTo("ABindingContext"));
+        }
+
+        [Test]
+        public void WhenCreateSciChartSurface_AndNewRenderableSeriesCollection_AndAddSeries_ShouldPropagateBindingContext()
+        {
+            var scs = new SciChartSurface();
+            var rs = new StubRenderableSeries();
+            scs.BindingContext = "ABindingContext";
+
+            // Set binding context then series add
+            scs.RenderableSeries = new ObservableCollection<IRenderableSeries>();
+            scs.RenderableSeries.Add(rs);
 
             Assert.That(rs.BindingContext, Is.EqualTo("ABindingContext"));
         }
