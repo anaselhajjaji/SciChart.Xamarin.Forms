@@ -17,9 +17,10 @@
         </StackLayout>
 
         <visuals:SciChartSurface Grid.Row="1" HorizontalOptions="Fill" VerticalOptions="Fill" ChartTitle="{Binding ChartTitle}"
+                                 BackgroundColor="#FF222222"
                                  ForegroundColor="Orange">
             <visuals:SciChartSurface.RenderableSeries>
-                <renderableSeries:FastLineRenderableSeries DataSeries="{Binding LineSeries}" Stroke="{Binding Stroke}" StrokeThickness="{Binding StrokeThickness}"/>
+                <renderableSeries:FastLineRenderableSeries DataSeries="{Binding LineSeries}" Stroke="{Binding LineStroke}" StrokeThickness="{Binding StrokeThickness}"/>
             </visuals:SciChartSurface.RenderableSeries>
         </visuals:SciChartSurface>
     </Grid>

@@ -146,8 +146,7 @@ namespace SciChart.Xamarin.Views.Visuals
             foreach (var item in RenderableSeries)
             {
                 item.BindingContext = this.BindingContext;
-            }
-
+            }            
             // TODO:  Axis, ChartModifier, Annotations
         }
     }
