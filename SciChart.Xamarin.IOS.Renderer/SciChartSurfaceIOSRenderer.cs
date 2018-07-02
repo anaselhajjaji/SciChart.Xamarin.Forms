@@ -38,11 +38,7 @@ namespace SciChart.Xamarin.iOS.Renderer
                 Control.TranslatesAutoresizingMaskIntoConstraints = true;
 
                 // Set property mapper
-                _propertyMapper = new SciChartSurfaceiOSPropertyMapper(e.NewElement, Control);                
-
-                // Some dummy data TODO Remove 
-                Control.XAxes.Add(new SCINumericAxis());
-                Control.YAxes.Add(new SCINumericAxis());
+                _propertyMapper = new SciChartSurfaceiOSPropertyMapper(e.NewElement, Control);                                
             }
 
             base.OnElementChanged(e);

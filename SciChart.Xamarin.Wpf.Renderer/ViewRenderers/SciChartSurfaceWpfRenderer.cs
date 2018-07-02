@@ -38,13 +38,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
                 this.SetNativeControl(new SciChartSurface());
 
                 // Setup property mapper 
-                _propertyMapper = new SciChartSurfaceWpfPropertyMapper(e.NewElement, Control);
-
-                // Some dummy data 
-                Control.XAxes.Add(new NumericAxis());
-                Control.YAxes.Add(new NumericAxis());
-                Control.XAxes[0].VisibleRange = new DoubleRange(0, 10);
-                Control.YAxes[0].VisibleRange = new DoubleRange(0, 10);
+                _propertyMapper = new SciChartSurfaceWpfPropertyMapper(e.NewElement, Control);                
             }
         }        
 

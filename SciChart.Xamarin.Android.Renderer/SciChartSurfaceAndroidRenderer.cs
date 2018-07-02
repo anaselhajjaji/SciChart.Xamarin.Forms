@@ -45,11 +45,7 @@ namespace SciChart.Xamarin.Android.Renderer
                 Control.RenderSurface = new RenderSurface(Context);
 
                 // Setup the property mapper 
-                _propertyMapper = new SciChartSurfaceAndroidPropertyMapper(e.NewElement, Control);                
-
-                // Some dummy params. TODO Remove these
-                Control.XAxes.Add(new NumericAxis(Context));
-                Control.YAxes.Add(new NumericAxis(Context));                
+                _propertyMapper = new SciChartSurfaceAndroidPropertyMapper(e.NewElement, Control);                                        
             }
 
             base.OnElementChanged(e);

@@ -33,13 +33,13 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
 
         private void OnXAxesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.RenderableSeries as IDisposable)?.Dispose();
+            (target.XAxes as IDisposable)?.Dispose();
             target.XAxes = new AxisCollectionWpf(source.XAxes);
         }
 
         private void OnYAxesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.RenderableSeries as IDisposable)?.Dispose();
+            (target.YAxes as IDisposable)?.Dispose();
             target.YAxes = new AxisCollectionWpf(source.YAxes);
         }
     }
