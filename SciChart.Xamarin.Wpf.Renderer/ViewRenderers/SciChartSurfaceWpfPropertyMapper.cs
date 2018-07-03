@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 using SciChart.Charting.Visuals;
-using SciChart.Xamarin.Views.Helpers;
+using SciChart.Xamarin.Views.Utility;
 using SciChart.Xamarin.Wpf.Renderer.DependencyService;
 using SciChart.Xamarin.Wpf.Renderer.Utility;
 using SciChartSurfaceX = SciChart.Xamarin.Views.Visuals.SciChartSurface;

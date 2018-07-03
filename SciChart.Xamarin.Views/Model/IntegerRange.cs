@@ -1,44 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SciChart.Xamarin.Views.Model
 {
-    public enum AutoRange
-    {
-        Once,
-        Always,
-        Never
-    }
-
-
     /// <summary>
-    /// Defines a range of type <see cref="System.Double"/>
+    /// Defines a Range of type Integer
     /// </summary>
-    public class DoubleRange : Range<double>
+    public class IntegerRange : Range<int>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DoubleRange"/> class.
+        /// Initializes a new instance of the <see cref="IntegerRange"/> class.
         /// </summary>
         /// <remarks></remarks>
-        public DoubleRange()
+        public IntegerRange()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DoubleRange"/> class.
+        /// Initializes a new instance of the <see cref="IntegerRange"/> class.
         /// </summary>
         /// <param name="min">The min.</param>
         /// <param name="max">The max.</param>
         /// <remarks></remarks>
-        public DoubleRange(double min, double max) : base(min, max)
+        public IntegerRange(int min, int max)
+            : base(min, max)
         {
         }
-
-        /// <summary>
-        /// Returns a new Undefined range
-        /// </summary>        
-        public static DoubleRange UndefinedRange { get { return new DoubleRange(double.NaN, double.NaN); } }
 
         /// <summary>
         /// Clones this instance.
@@ -47,13 +33,13 @@ namespace SciChart.Xamarin.Views.Model
         /// <remarks></remarks>
         public override object Clone()
         {
-            return new DoubleRange(Min, Max);
+            return new IntegerRange(Min, Max);
         }
 
         /// <summary>
-        /// Gets the difference (Max - Min) of this range
+        /// Gets the Diff (Max - Min) of this range
         /// </summary>
-        public override double Diff
+        public override int Diff
         {
             get { return Max - Min; }
         }
@@ -64,7 +50,7 @@ namespace SciChart.Xamarin.Views.Model
         /// <remarks></remarks>
         public override bool IsZero
         {
-            get { return Math.Abs(Diff) <= double.Epsilon; }
+            get { return Diff == 0; }
         }
 
         /// <summary>
@@ -74,37 +60,34 @@ namespace SciChart.Xamarin.Views.Model
         /// <returns></returns>
         public override DoubleRange AsDoubleRange()
         {
-            return this;
+            return new DoubleRange(Min, Max);
         }
 
         /// <summary>
-        /// Sets the Min, Max values on the <see cref="IRange"/>, returning this instance after modification
+        /// Sets the Min, Max values on the <see cref="IRange{T}"/>, returning this instance after modification
         /// </summary>
         /// <param name="min">The new Min value.</param>
         /// <param name="max">The new Max value.</param>
         /// <returns>This instance, after the operation</returns>
         /// <remarks></remarks>
-        public override IRange<double> SetMinMax(double min, double max)
+        public override IRange<int> SetMinMax(double min, double max)
         {
-            SetMinMaxInternal(min, max);
+            SetMinMaxInternal((int)min, (int)max);
 
             return this;
         }
 
         /// <summary>
-        /// Sets the Min, Max values on the <see cref="IRange"/> with a max range to clip values to, returning this instance after modification
+        /// Sets the Min, Max values on the <see cref="IRange{T}"/> with a max range to clip values to, returning this instance after modification
         /// </summary>
         /// <param name="min">The new Min value.</param>
         /// <param name="max">The new Max value.</param>
         /// <param name="maxRange">The max range, which is used to clip values.</param>
         /// <returns>This instance, after the operation</returns>
         /// <remarks></remarks>
-        public override IRange<double> SetMinMax(double min, double max, IRange<double> maxRange)
+        public override IRange<int> SetMinMax(double min, double max, IRange<int> maxRange)
         {
-            Min = Math.Max(min, maxRange.Min);
-            Max = Math.Min(max, maxRange.Max);
-
-            return this;
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -114,31 +97,21 @@ namespace SciChart.Xamarin.Views.Model
         /// <param name="maxFraction">The Max fraction to grow by. For example, Max = 10 and minFraction = 0.2 will result in the new Max = 12</param>
         /// <returns>This instance, after the operation</returns>
         /// <remarks></remarks>
-        public override IRange<double> GrowBy(double minFraction, double maxFraction)
+        public override IRange<int> GrowBy(double minFraction, double maxFraction)
         {
-            double diff = Diff;
+            var range = Max - Min;
 
-            // If min == max, expand around the mid line
-            double min = Min - minFraction * (IsZero ? Min : diff);
-            double max = Max + maxFraction * (IsZero ? Max : diff);
-
-            // Swap if min > max (occurs when mid line is negative)
-            if (min > max)
+            if (range == 0)
             {
-                NumberUtil.Swap(ref min, ref max);
+                Max += (int)(Max * maxFraction);
+                Min -= (int)(Min * minFraction);
+                return this;
             }
 
-            // If still zero, then expand around the zero line
-            if (Math.Abs(min - max) <= double.Epsilon && Math.Abs(min) <= double.Epsilon)
-            {
-                min = -1.0;
-                max = 1.0;
-            }
+            int max = Max + (int)(range * maxFraction);
+            int min = Min - (int)(range * minFraction);
 
-            Min = min;
-            Max = max;
-
-            return this;
+            return new IntegerRange(min, max);
         }
 
         /// <summary>
@@ -146,13 +119,13 @@ namespace SciChart.Xamarin.Views.Model
         /// </summary>
         /// <param name="maximumRange">The Maximum Range</param>
         /// <returns>This instance, after the operation</returns>
-        public override IRange<double> ClipTo(IRange<double> maximumRange)
+        public override IRange<int> ClipTo(IRange<int> maximumRange)
         {
             var oldMax = Max;
             var oldMin = Min;
 
-            var max = Math.Min(Max, maximumRange.Max);
-            var min = Math.Max(Min, maximumRange.Min);
+            var max = Max > maximumRange.Max ? maximumRange.Max : Max;
+            var min = Min < maximumRange.Min ? maximumRange.Min : Min;
 
             if (min > maximumRange.Max)
             {

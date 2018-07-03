@@ -9,7 +9,7 @@ using SciChart.Drawing.Canvas;
 using SciChart.Drawing.OpenGL;
 using SciChart.Xamarin.Android.Renderer;
 using SciChart.Xamarin.Views;
-using SciChart.Xamarin.Views.Helpers;
+using SciChart.Xamarin.Views.Utility;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using SciChartSurfaceX = SciChart.Xamarin.Views.Visuals.SciChartSurface;

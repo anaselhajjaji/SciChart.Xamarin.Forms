@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
-using SciChart.Xamarin.Views.Visuals;
-using Xamarin.Forms;
 
-namespace SciChart.Xamarin.Views.Helpers
+namespace SciChart.Xamarin.Views.Utility
 {
     public class PropertyMapper<TSource, TTarget> : Dictionary<string, Action<TSource, TTarget>>
         where TSource:class

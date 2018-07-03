@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using SciChart.Charting.Visuals.RenderableSeries;
-using SciChart.Xamarin.Views.Helpers;
 using SciChart.Xamarin.Views.Visuals.RenderableSeries;
 using IRenderableSeries = SciChart.Xamarin.Views.Visuals.RenderableSeries.IRenderableSeries;
 

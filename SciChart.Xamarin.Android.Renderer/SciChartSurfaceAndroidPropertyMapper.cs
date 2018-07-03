@@ -1,7 +1,7 @@
 ﻿using System;
 using SciChart.Charting.Visuals;
 using SciChart.Xamarin.Android.Renderer.DependencyService;
-using SciChart.Xamarin.Views.Helpers;
+using SciChart.Xamarin.Views.Utility;
 using SciChartSurfaceX = SciChart.Xamarin.Views.Visuals.SciChartSurface;
 
 namespace SciChart.Xamarin.Android.Renderer

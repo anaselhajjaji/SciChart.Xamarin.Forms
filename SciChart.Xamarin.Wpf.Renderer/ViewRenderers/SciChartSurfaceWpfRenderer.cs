@@ -3,7 +3,7 @@ using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Data.Model;
 using SciChart.Xamarin.Views;
-using SciChart.Xamarin.Views.Helpers;
+using SciChart.Xamarin.Views.Utility;
 using Xamarin.Forms.Platform.WPF;
 using SciChartSurfaceX = SciChart.Xamarin.Views.Visuals.SciChartSurface;
 

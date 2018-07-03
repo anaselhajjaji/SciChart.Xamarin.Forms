@@ -7,7 +7,6 @@ using SciChart.Xamarin.Views.Visuals.Annotations;
 using SciChart.Xamarin.Views.Visuals.Axes;
 using SciChart.Xamarin.Views.Visuals.RenderableSeries;
 using Xamarin.Forms;
-using SciChart.Xamarin.Views.Helpers;
 
 namespace SciChart.Xamarin.Views.Visuals
 {

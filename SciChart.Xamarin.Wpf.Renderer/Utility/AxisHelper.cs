@@ -1,6 +1,8 @@
 ﻿using System;
+using SciChart.Xamarin.Views.Model;
 using SciChart.Xamarin.Views.Visuals.Axes;
 using WpfAxisAlignment = SciChart.Charting.Visuals.Axes.AxisAlignment;
+using WpfAutoRange = SciChart.Charting.Visuals.Axes.AutoRange;
 
 namespace SciChart.Xamarin.Wpf.Renderer.Utility
 {
@@ -30,6 +32,30 @@ namespace SciChart.Xamarin.Wpf.Renderer.Utility
                 default:
                     throw new NotImplementedException("The AxisAlignment " + xfAxisAlignment.ToString() +
                                                       " has not been handled");
+            }
+        }
+
+        public static AutoRange ToXfAutoRange(Charting.Visuals.Axes.AutoRange wpfAutoRange)
+        {
+            switch (wpfAutoRange)
+            {
+                case WpfAutoRange.Always: return AutoRange.Always;
+                case WpfAutoRange.Once: return AutoRange.Once;
+                case WpfAutoRange.Never: return AutoRange.Never;
+                default:
+                    throw new NotImplementedException("The AutoRange value " + wpfAutoRange.ToString() + " has not been handled");
+            }
+        }
+
+        public static Charting.Visuals.Axes.AutoRange FromXfAutoRange(AutoRange xfAutoRange)
+        {
+            switch (xfAutoRange)
+            {
+                case AutoRange.Always: return WpfAutoRange.Always;
+                case AutoRange.Once: return WpfAutoRange.Once;
+                case AutoRange.Never: return WpfAutoRange.Never;                
+                default:
+                    throw new NotImplementedException("The AutoRange value " + xfAutoRange.ToString() + " has not been handled");
             }
         }
     }

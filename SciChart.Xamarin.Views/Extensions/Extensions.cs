@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SciChart.Xamarin.Views.Helpers
+namespace SciChart.Xamarin.Views
 {
     internal static class Extensions
     {
@@ -17,4 +17,6 @@ namespace SciChart.Xamarin.Views.Helpers
             }
         }
     }
+
+   
 }
