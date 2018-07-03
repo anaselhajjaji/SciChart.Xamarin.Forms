@@ -10,7 +10,11 @@ namespace SciChart.Xamarin.iOS.Renderer.DependencyService
     [Foundation.Register]
     internal class NumericAxisiOS : SCINumericAxis, INumericAxis
     {
-        public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
+        event EventHandler<VisibleRangeChangedEventArgs> IAxisCore.VisibleRangeChanged
+        {
+            add { throw new NotImplementedException(); }
+            remove { throw new NotImplementedException(); }
+        }
 
         public bool DrawMinorTicks
         {

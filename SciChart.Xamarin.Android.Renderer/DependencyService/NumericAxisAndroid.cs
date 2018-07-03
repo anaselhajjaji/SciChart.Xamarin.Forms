@@ -7,17 +7,20 @@ using SciChart.Xamarin.Views.Visuals.Axes;
 using Xamarin.Forms;
 using AutoRange = SciChart.Xamarin.Views.Model.AutoRange;
 using AxisAlignment = SciChart.Xamarin.Views.Visuals.Axes.AxisAlignment;
+using IAxis = SciChart.Xamarin.Views.Visuals.Axes.IAxis;
+using IAxisCore = SciChart.Xamarin.Views.Visuals.Axes.IAxisCore;
 using NumericAxis = SciChart.Charting.Visuals.Axes.NumericAxis;
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
 {
     internal class NumericAxisAndroid : NumericAxis, INumericAxis
     {
-        public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
+        private EventHandler<VisibleRangeChangedEventArgs> _visibleRangEventHandler;
 
         public NumericAxisAndroid(Context context) : base(context)
         {
-        }
+            base.VisibleRangeChange += OnAxisVisibleRangeChanged;
+        } 
 
         public Color AxisBandsFill
         {
@@ -25,7 +28,7 @@ namespace SciChart.Xamarin.Android.Renderer.DependencyService
             set => base.AxisBandsStyle = ColorUtil.BrushFromXamarinColor(value);
         }
 
-        public AutoRange AutoRange
+        AutoRange IAxisCore.AutoRange
         {
             get => AxisHelper.ToXfAutoRange(base.AutoRange);
             set => base.AutoRange = AxisHelper.FromXfAutoRange(value);
@@ -39,22 +42,37 @@ namespace SciChart.Xamarin.Android.Renderer.DependencyService
             set => base.AxisId = value;
         }
 
-        public IRange VisibleRange
+        IRange IAxisCore.VisibleRange
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
 
-        public IRange<double> GrowBy
+        IRange<double> IAxisCore.GrowBy
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
-        }        
+        }
 
-        public AxisAlignment AxisAlignment
+        event EventHandler<VisibleRangeChangedEventArgs> IAxisCore.VisibleRangeChanged
+        {
+            add => _visibleRangEventHandler += value;
+            remove => _visibleRangEventHandler -= value;
+        }
+
+        AxisAlignment IAxis.AxisAlignment
         {
             get => AxisHelper.ToXfAxisAlignemnt(base.AxisAlignment);
             set => base.AxisAlignment = AxisHelper.FromXfAxisAlignment(value);
+        }
+
+        private void OnAxisVisibleRangeChanged(object sender, SciChart.Charting.Visuals.Axes.VisibleRangeChangeEventArgs e)
+        {
+            var handler = _visibleRangEventHandler;
+            if (handler != null)
+            {
+               // TODO handler(sender, new VisibleRangeChangedEventArgs(e.OldRange, e.NewRange, e.IsAnimating));
+            }
         }
     }
 }

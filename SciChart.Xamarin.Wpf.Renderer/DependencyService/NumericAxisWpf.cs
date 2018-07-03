@@ -8,17 +8,19 @@ using NumericAxis = SciChart.Charting.Visuals.Axes.NumericAxis;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
+    internal class VisibleRangeMapper
+    {        
+    }
+
     internal class NumericAxisWpf : NumericAxis, INumericAxis
     {
-        public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
-
-        public Color AxisBandsFill
+        Color IAxisCore.AxisBandsFill
         {
             get => ColorUtil.ToXamarinColor(base.AxisBandsFill);
             set => base.AxisBandsFill = ColorUtil.FromXamarinColor(value);
         }
 
-        public AutoRange AutoRange
+        AutoRange IAxisCore.AutoRange
         {
             get => AxisHelper.ToXfAutoRange(base.AutoRange);
             set => base.AutoRange = AxisHelper.FromXfAutoRange(value);
@@ -30,19 +32,25 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
             set => base.DataContext = value;
         }
 
-        public IRange VisibleRange
+        IRange IAxisCore.VisibleRange
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }
         }
 
-        public IRange<double> GrowBy
+        IRange<double> IAxisCore.GrowBy
         {
             get => new DoubleRange(base.GrowBy.Min, base.GrowBy.Max);
             set => base.GrowBy = new Data.Model.DoubleRange(value.Min, value.Max);
-        }        
+        }
 
-        public AxisAlignment AxisAlignment
+        event EventHandler<VisibleRangeChangedEventArgs> IAxisCore.VisibleRangeChanged
+        {
+            add { throw new NotImplementedException(); }
+            remove { throw new NotImplementedException(); }
+        }
+
+        AxisAlignment IAxis.AxisAlignment
         {
             get => AxisHelper.ToXfAxisAlignemnt(base.AxisAlignment);
             set => base.AxisAlignment = AxisHelper.FromXfAxisAlignment(value);
