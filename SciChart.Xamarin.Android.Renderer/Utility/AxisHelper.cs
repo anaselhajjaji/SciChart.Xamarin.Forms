@@ -1,5 +1,8 @@
 ﻿using System;
+using SciChart.Xamarin.Views.Model;
 using SciChart.Xamarin.Views.Visuals.Axes;
+using AndroidAutoRange = SciChart.Charting.Visuals.Axes.AutoRange;
+using XfAutoRange = SciChart.Xamarin.Views.Model.AutoRange;
 
 namespace SciChart.Xamarin.Android.Renderer.Utility
 {
@@ -29,6 +32,27 @@ namespace SciChart.Xamarin.Android.Renderer.Utility
                 default:
                     throw new NotImplementedException("The AxisAlignment " + xfAxisAlignment.ToString() +
                                                       " has not been handled");
+            }
+        }
+
+        public static XfAutoRange ToXfAutoRange(AndroidAutoRange nativeAutoRange)
+        {
+            if (nativeAutoRange == AndroidAutoRange.Once) return XfAutoRange.Once;
+            if (nativeAutoRange == AndroidAutoRange.Always) return XfAutoRange.Always;
+            if (nativeAutoRange == AndroidAutoRange.Never) return XfAutoRange.Never;
+
+            throw new NotImplementedException("The AutoRange value " + nativeAutoRange.ToString() + " has not been handled");
+        }
+
+        public static AndroidAutoRange FromXfAutoRange(XfAutoRange xfAutoRange)
+        {
+            switch (xfAutoRange)
+            {
+                case XfAutoRange.Always: return AndroidAutoRange.Always;
+                case XfAutoRange.Once: return AndroidAutoRange.Once;
+                case XfAutoRange.Never: return AndroidAutoRange.Never;
+                default:
+                    throw new NotImplementedException("The AutoRange value " + xfAutoRange.ToString() + " has not been handled");
             }
         }
     }

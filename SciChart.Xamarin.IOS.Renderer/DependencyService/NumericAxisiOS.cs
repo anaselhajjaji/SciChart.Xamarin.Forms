@@ -10,14 +10,55 @@ namespace SciChart.Xamarin.iOS.Renderer.DependencyService
     [Foundation.Register]
     internal class NumericAxisiOS : SCINumericAxis, INumericAxis
     {
-        public bool DrawMinorTicks { get; set; }
-        public bool DrawLabels { get; set; }
-        public bool DrawMajorTicks { get; set; }
-        public bool DrawMajorGridLines { get; set; }
-        public bool DrawMinorGridLines { get; set; }
-        public bool DrawMajorBands { get; set; }
-        public Color AxisBandsFill { get; set; }
-        public AutoRange AutoRange { get; set; }
+        public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
+
+        public bool DrawMinorTicks
+        {
+            get => base.Style.DrawMinorTicks;
+            set => base.Style.DrawMinorTicks = value;
+        }
+
+        public bool DrawLabels
+        {
+            get => base.Style.DrawLabels;
+            set => base.Style.DrawLabels = value;
+        }
+        public bool DrawMajorTicks
+        {
+            get => base.Style.DrawMajorTicks;
+            set => base.Style.DrawMajorTicks = value;
+        }
+
+        bool IAxisCore.DrawMajorGridLines
+        {
+            get => base.Style.DrawMajorGridLines;
+            set => base.Style.DrawMajorGridLines = value;
+        }
+
+        bool IAxisCore.DrawMinorGridLines
+        {
+            get => base.Style.DrawMinorGridLines;
+            set => base.Style.DrawMinorGridLines = value;
+        }
+
+        bool IAxisCore.DrawMajorBands
+        {
+            get => base.Style.DrawMajorBands;
+            set => base.Style.DrawMajorBands = value;
+        }
+
+        public Color AxisBandsFill
+        {
+            get => ColorUtil.BrushToXamarinColor(base.Style.GridBandBrush);
+            set => base.Style.GridBandBrush = ColorUtil.BrushFromXamarinColor(value);
+        }
+
+        public AutoRange AutoRange
+        {
+            get => AxisHelper.ToXfAutoRange(base.AutoRange);
+            set => base.AutoRange = AxisHelper.FromXfAutoRange(value);
+        }
+
         public object BindingContext { get; set; }
 
         public string Id
@@ -26,9 +67,17 @@ namespace SciChart.Xamarin.iOS.Renderer.DependencyService
             set => base.AxisId = value;
         }
 
-        public IRange VisibleRange { get; set; }
-        public IRange<double> GrowBy { get; set; }
-        public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
+        public IRange VisibleRange
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }
+
+        public IRange<double> GrowBy
+        {
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
+        }        
 
         AxisAlignment IAxis.AxisAlignment
         {

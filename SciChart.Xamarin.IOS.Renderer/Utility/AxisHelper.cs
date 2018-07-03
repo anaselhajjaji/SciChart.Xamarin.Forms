@@ -1,5 +1,6 @@
 ﻿using System;
 using SciChart.iOS.Charting;
+using SciChart.Xamarin.Views.Model;
 using SciChart.Xamarin.Views.Visuals.Axes;
 
 namespace SciChart.Xamarin.iOS.Renderer.Utility
@@ -31,6 +32,16 @@ namespace SciChart.Xamarin.iOS.Renderer.Utility
                     throw new NotImplementedException("The AxisAlignment " + xfAxisAlignment.ToString() +
                                                       " has not been handled");
             }
+        }
+
+        public static AutoRange ToXfAutoRange(SCIAutoRange autoRange)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static SCIAutoRange FromXfAutoRange(AutoRange value)
+        {
+            throw new NotImplementedException();
         }
     }
 }
