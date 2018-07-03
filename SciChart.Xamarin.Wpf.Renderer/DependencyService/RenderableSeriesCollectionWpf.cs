@@ -6,7 +6,7 @@ using IRenderableSeriesWpf = SciChart.Charting.Visuals.RenderableSeries.IRendera
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {    
-    public class RenderableSeriesCollectionWpf : CollectionMapper<ObservableCollection<IRenderableSeriesWpf>, IRenderableSeriesXf, IRenderableSeriesWpf>
+    public class RenderableSeriesCollectionWpf : CollectionMapper<ObservableCollection<IRenderableSeriesWpf>, IRenderableSeriesXf>
     {
         public RenderableSeriesCollectionWpf(ObservableCollection<IRenderableSeriesWpf> nativeCollection, ObservableCollection<IRenderableSeriesXf> xformsCollection) 
             : base(nativeCollection, xformsCollection)

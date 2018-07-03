@@ -9,7 +9,7 @@ using IRenderableSeriesiOS = SciChart.iOS.Charting.ISCIRenderableSeriesProtocol;
 
 namespace SciChart.Xamarin.iOS.Renderer.DependencyService
 {
-    public class RenderableSeriesCollectioniOS : CollectionMapper<SCIRenderableSeriesCollection, IRenderableSeriesXf, IRenderableSeriesiOS>
+    public class RenderableSeriesCollectioniOS : CollectionMapper<SCIRenderableSeriesCollection, IRenderableSeriesXf>
     {
         public RenderableSeriesCollectioniOS(SCIRenderableSeriesCollection nativeCollection, ObservableCollection<IRenderableSeriesXf> xformsCollection)
             : base(nativeCollection, xformsCollection)

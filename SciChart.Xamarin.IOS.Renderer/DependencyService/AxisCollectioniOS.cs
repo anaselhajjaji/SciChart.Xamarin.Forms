@@ -11,7 +11,7 @@ using IAxisNative = SciChart.iOS.Charting.ISCIAxis2DProtocol;
 namespace SciChart.Xamarin.iOS.Renderer.DependencyService
 {
     [Register]
-    public class AxisCollectioniOS : CollectionMapper<SCIAxisCollection, IAxisXf, IAxisNative>
+    public class AxisCollectioniOS : CollectionMapper<SCIAxisCollection, IAxisXf>
     {
         public AxisCollectioniOS(SCIAxisCollection nativeCollection, ObservableCollection<IAxis> xformsCollection) : base(nativeCollection, xformsCollection)
         {

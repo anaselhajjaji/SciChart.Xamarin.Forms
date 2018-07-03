@@ -9,7 +9,7 @@ using IRenderableSeriesAndroid = SciChart.Charting.Visuals.RenderableSeries.IRen
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
 { 
-    public class RenderableSeriesCollectionAndroid : CollectionMapper<RenderableSeriesCollection, IRenderableSeriesXf, IRenderableSeriesAndroid>
+    public class RenderableSeriesCollectionAndroid : CollectionMapper<RenderableSeriesCollection, IRenderableSeriesXf>
     {
         public RenderableSeriesCollectionAndroid(RenderableSeriesCollection nativeCollection, ObservableCollection<IRenderableSeriesXf> xformsCollection)
             : base(nativeCollection, xformsCollection)

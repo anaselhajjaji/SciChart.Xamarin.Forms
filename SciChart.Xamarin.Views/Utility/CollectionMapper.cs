@@ -6,6 +6,7 @@ using System.Text;
 
 namespace SciChart.Xamarin.Views.Utility
 {
+    
     /// <summary>
     /// Utility class to map an ObservableCollection of type <see cref="TFrom"/> from Xamarin Forms to native platform collections. 
     /// When the underlying collection updates, the native collection will update too
@@ -13,7 +14,7 @@ namespace SciChart.Xamarin.Views.Utility
     /// <typeparam name="TCollectionType"></typeparam>
     /// <typeparam name="TFrom"></typeparam>
     /// <typeparam name="TTo"></typeparam>
-    public abstract class CollectionMapper<TCollectionType, TFrom, TTo>
+    public abstract class CollectionMapper<TCollectionType, TFrom>
     {
         private readonly TCollectionType _nativeCollection;
         private readonly ObservableCollection<TFrom> _xformsCollection;

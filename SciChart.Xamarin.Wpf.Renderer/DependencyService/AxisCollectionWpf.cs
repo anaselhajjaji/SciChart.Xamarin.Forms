@@ -7,7 +7,7 @@ using IAxisNative = SciChart.Charting.Visuals.Axes.IAxis;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
-    public class AxisCollectionWpf : CollectionMapper<AxisCollection, IAxisXf, IAxisNative>
+    public class AxisCollectionWpf : CollectionMapper<AxisCollection, IAxisXf>
     {
         public AxisCollectionWpf(AxisCollection nativeCollection, ObservableCollection<IAxis> xformsCollection)
             : base(nativeCollection, xformsCollection)

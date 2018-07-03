@@ -9,7 +9,7 @@ using IAxisNative = SciChart.Charting.Visuals.Axes.IAxis;
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
 {
-    public class AxisCollectionAndroid : CollectionMapper<AxisCollection, IAxisXf, IAxisNative>
+    public class AxisCollectionAndroid : CollectionMapper<AxisCollection, IAxisXf>
     {
         public AxisCollectionAndroid(AxisCollection nativeCollection, ObservableCollection<IAxisXf> xformsCollection) 
             : base(nativeCollection, xformsCollection)
