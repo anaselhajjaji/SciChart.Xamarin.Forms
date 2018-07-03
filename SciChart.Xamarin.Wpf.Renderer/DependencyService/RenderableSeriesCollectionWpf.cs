@@ -1,36 +1,26 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using SciChart.Charting.Visuals.RenderableSeries;
+﻿using System.Collections.ObjectModel;
+using SciChart.Xamarin.Views.Utility;
 using SciChart.Xamarin.Views.Visuals.RenderableSeries;
-using IRenderableSeries = SciChart.Xamarin.Views.Visuals.RenderableSeries.IRenderableSeries;
+using IRenderableSeriesXf = SciChart.Xamarin.Views.Visuals.RenderableSeries.IRenderableSeries;
+using IRenderableSeriesWpf = SciChart.Charting.Visuals.RenderableSeries.IRenderableSeries;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {    
-    public class RenderableSeriesCollectionWpf : ObservableCollection<SciChart.Charting.Visuals.RenderableSeries.IRenderableSeries>
+    public class RenderableSeriesCollectionWpf : CollectionMapper<ObservableCollection<IRenderableSeriesWpf>, IRenderableSeriesXf, IRenderableSeriesWpf>
     {
-        private readonly ObservableCollection<IRenderableSeries> _crossPlatformSeries;
-
-        public RenderableSeriesCollectionWpf(ObservableCollection<IRenderableSeries> crossPlatformSeries)
+        public RenderableSeriesCollectionWpf(ObservableCollection<IRenderableSeriesWpf> nativeCollection, ObservableCollection<IRenderableSeriesXf> xformsCollection) 
+            : base(nativeCollection, xformsCollection)
         {
-            _crossPlatformSeries = crossPlatformSeries;
-            _crossPlatformSeries.CollectionChanged += OnCollectionChanged;
-
-            OnCollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
-        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnCleared(ObservableCollection<IRenderableSeriesWpf> destCollection)
         {
-            this.Clear();
-            foreach (var item in _crossPlatformSeries)
-            {
-                this.Add((SciChart.Charting.Visuals.RenderableSeries.IRenderableSeries)((CrossPlatformRenderableSeriesBase)item).InnerSeries);
-            }
+            destCollection.Clear();            
         }
 
-        public void Dispose()
+        protected override void OnAdded(ObservableCollection<IRenderableSeriesWpf> destCollection, IRenderableSeriesXf item)
         {
-            _crossPlatformSeries.CollectionChanged -= OnCollectionChanged;
+            destCollection.Add((IRenderableSeriesWpf)((CrossPlatformRenderableSeriesBase)item).InnerSeries);
         }
     }
 }

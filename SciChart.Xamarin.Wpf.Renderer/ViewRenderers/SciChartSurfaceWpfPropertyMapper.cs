@@ -13,6 +13,10 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
     /// </summary>
     public class SciChartSurfaceWpfPropertyMapper : PropertyMapper<SciChartSurfaceX, SciChartSurface>
     {
+        private RenderableSeriesCollectionWpf _rSeriesCollection;
+        private AxisCollectionWpf _xAxesCollection;
+        private AxisCollectionWpf _yAxesCollection;
+
         public SciChartSurfaceWpfPropertyMapper(SciChartSurfaceX sourceControl, SciChartSurface targetControl) : base(targetControl)
         {
             this.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
@@ -27,20 +31,20 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
 
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.RenderableSeries as IDisposable)?.Dispose();
-            target.RenderableSeries = new RenderableSeriesCollectionWpf(source.RenderableSeries);
+            _rSeriesCollection?.Dispose();
+            _rSeriesCollection = new RenderableSeriesCollectionWpf(target.RenderableSeries, source.RenderableSeries);
         }
 
         private void OnXAxesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.XAxes as IDisposable)?.Dispose();
-            target.XAxes = new AxisCollectionWpf(source.XAxes);
+            _xAxesCollection?.Dispose();
+            _xAxesCollection = new AxisCollectionWpf(target.XAxes, source.XAxes);
         }
 
         private void OnYAxesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.YAxes as IDisposable)?.Dispose();
-            target.YAxes = new AxisCollectionWpf(source.YAxes);
+            _yAxesCollection?.Dispose();
+            _yAxesCollection = new AxisCollectionWpf(target.YAxes, source.YAxes);
         }
     }
 }

@@ -8,6 +8,10 @@ namespace SciChart.Xamarin.Android.Renderer
 {
     public class SciChartSurfaceAndroidPropertyMapper : PropertyMapper<SciChartSurfaceX, SciChartSurface>
     {
+        private RenderableSeriesCollectionAndroid _rSeriesCollection;
+        private AxisCollectionAndroid _xAxesCollection;
+        private AxisCollectionAndroid _yAxesCollection;
+
         public SciChartSurfaceAndroidPropertyMapper(SciChartSurfaceX sourceControl, Charting.Visuals.SciChartSurface targetControl) : base(targetControl)
         {
             this.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
@@ -21,20 +25,20 @@ namespace SciChart.Xamarin.Android.Renderer
 
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.RenderableSeries as IDisposable)?.Dispose();
-            target.RenderableSeries = new RenderableSeriesCollectionAndroid(source.RenderableSeries);
+            _rSeriesCollection?.Dispose();
+            _rSeriesCollection = new RenderableSeriesCollectionAndroid(target.RenderableSeries, source.RenderableSeries);
         }
 
         private void OnXAxesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.XAxes as IDisposable)?.Dispose();
-            target.XAxes = new AxisCollectionAndroid(source.XAxes);
+            _xAxesCollection?.Dispose();
+            _xAxesCollection = new AxisCollectionAndroid(target.XAxes, source.XAxes);
         }
 
         private void OnYAxesChanged(SciChartSurfaceX source, SciChartSurface target)
         {
-            (target.YAxes as IDisposable)?.Dispose();
-            target.YAxes = new AxisCollectionAndroid(source.YAxes);
+            _yAxesCollection?.Dispose();
+            _yAxesCollection = new AxisCollectionAndroid(target.YAxes, source.YAxes);
         }
     }
 }

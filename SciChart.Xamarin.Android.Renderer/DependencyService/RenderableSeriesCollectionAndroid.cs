@@ -2,34 +2,28 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using SciChart.Charting.Model;
+using SciChart.Xamarin.Views.Utility;
 using SciChart.Xamarin.Views.Visuals.RenderableSeries;
+using IRenderableSeriesXf = SciChart.Xamarin.Views.Visuals.RenderableSeries.IRenderableSeries;
+using IRenderableSeriesAndroid = SciChart.Charting.Visuals.RenderableSeries.IRenderableSeries;
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
-{
-    public class RenderableSeriesCollectionAndroid : RenderableSeriesCollection, IDisposable
+{ 
+    public class RenderableSeriesCollectionAndroid : CollectionMapper<RenderableSeriesCollection, IRenderableSeriesXf, IRenderableSeriesAndroid>
     {
-        private readonly ObservableCollection<IRenderableSeries> _crossPlatformSeries;
-
-        public RenderableSeriesCollectionAndroid(ObservableCollection<IRenderableSeries> crossPlatformSeries)
+        public RenderableSeriesCollectionAndroid(RenderableSeriesCollection nativeCollection, ObservableCollection<IRenderableSeriesXf> xformsCollection)
+            : base(nativeCollection, xformsCollection)
         {
-            _crossPlatformSeries = crossPlatformSeries;
-            _crossPlatformSeries.CollectionChanged += OnCollectionChanged;
-
-            OnCollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
-        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnCleared(RenderableSeriesCollection destCollection)
         {
-            this.Clear();
-            foreach (var item in _crossPlatformSeries)
-            {
-                this.Add((SciChart.Charting.Visuals.RenderableSeries.IRenderableSeries)((CrossPlatformRenderableSeriesBase)item).InnerSeries);
-            }
+            destCollection.Clear();
         }
 
-        public void Dispose()
+        protected override void OnAdded(RenderableSeriesCollection destCollection, IRenderableSeriesXf item)
         {
-            _crossPlatformSeries.CollectionChanged -= OnCollectionChanged;
+            destCollection.Add((IRenderableSeriesAndroid)((CrossPlatformRenderableSeriesBase)item).InnerSeries);
         }
     }
 }

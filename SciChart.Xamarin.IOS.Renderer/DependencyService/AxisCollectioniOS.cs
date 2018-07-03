@@ -3,37 +3,28 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Foundation;
 using SciChart.iOS.Charting;
+using SciChart.Xamarin.Views.Utility;
 using SciChart.Xamarin.Views.Visuals.Axes;
+using IAxisXf = SciChart.Xamarin.Views.Visuals.Axes.IAxis;
+using IAxisNative = SciChart.iOS.Charting.ISCIAxis2DProtocol;
 
 namespace SciChart.Xamarin.iOS.Renderer.DependencyService
 {
     [Register]
-    public class AxisCollectioniOS : IDisposable
+    public class AxisCollectioniOS : CollectionMapper<SCIAxisCollection, IAxisXf, IAxisNative>
     {
-        private readonly SCIAxisCollection _targetCollection;
-        private readonly ObservableCollection<IAxis> _crossPlatformSeries;
-
-        public AxisCollectioniOS(SCIAxisCollection targetCollection, ObservableCollection<IAxis> crossPlatformSeries)
+        public AxisCollectioniOS(SCIAxisCollection nativeCollection, ObservableCollection<IAxis> xformsCollection) : base(nativeCollection, xformsCollection)
         {
-            _targetCollection = targetCollection;
-            _crossPlatformSeries = crossPlatformSeries;
-            _crossPlatformSeries.CollectionChanged += OnCollectionChanged;
-
-            OnCollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
-        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnCleared(SCIAxisCollection destCollection)
         {
-            _targetCollection.Clear();
-            foreach (var item in _crossPlatformSeries)
-            {
-                _targetCollection.Add((ISCIAxis2DProtocol)((AxisCore)item).InnerAxis);
-            }
+            destCollection.Clear();
         }
 
-        public void Dispose()
+        protected override void OnAdded(SCIAxisCollection destCollection, IAxisXf item)
         {
-            _crossPlatformSeries.CollectionChanged -= OnCollectionChanged;
+            destCollection.Add((IAxisNative)((AxisCore)item).InnerAxis);
         }
     }
 }

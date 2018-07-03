@@ -1,35 +1,27 @@
 ﻿using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using SciChart.Charting.Model;
+using SciChart.Xamarin.Views.Utility;
 using SciChart.Xamarin.Views.Visuals.Axes;
-using SciChart.Xamarin.Views.Visuals.RenderableSeries;
+using IAxisXf = SciChart.Xamarin.Views.Visuals.Axes.IAxis;
+using IAxisNative = SciChart.Charting.Visuals.Axes.IAxis;
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
-    public class AxisCollectionWpf : AxisCollection
+    public class AxisCollectionWpf : CollectionMapper<AxisCollection, IAxisXf, IAxisNative>
     {
-        private readonly ObservableCollection<IAxis> _crossPlatformSeries;
-
-        public AxisCollectionWpf(ObservableCollection<IAxis> crossPlatformSeries)
+        public AxisCollectionWpf(AxisCollection nativeCollection, ObservableCollection<IAxis> xformsCollection)
+            : base(nativeCollection, xformsCollection)
         {
-            _crossPlatformSeries = crossPlatformSeries;
-            _crossPlatformSeries.CollectionChanged += OnCollectionChanged;
-
-            OnCollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
-        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnCleared(AxisCollection destCollection)
         {
-            this.Clear();
-            foreach (var item in _crossPlatformSeries)
-            {
-                this.Add((SciChart.Charting.Visuals.Axes.IAxis)((AxisCore)item).InnerAxis);
-            }
+            destCollection.Clear();
         }
 
-        public void Dispose()
+        protected override void OnAdded(AxisCollection destCollection, IAxisXf item)
         {
-            _crossPlatformSeries.CollectionChanged -= OnCollectionChanged;
+            destCollection.Add((IAxisNative)((AxisCore)item).InnerAxis);
         }
     }
 }

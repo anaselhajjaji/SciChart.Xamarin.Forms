@@ -11,6 +11,7 @@ namespace SciChart.Xamarin.iOS.Renderer
     {
         private AxisCollectioniOS _xAxesCollection;
         private AxisCollectioniOS _yAxesCollection;
+        private RenderableSeriesCollectioniOS _rSeriesCollection;
 
         public SciChartSurfaceiOSPropertyMapper(SciChartSurfaceX sourceControl, SCIChartSurface targetControl) : base(targetControl)
         {
@@ -25,7 +26,8 @@ namespace SciChart.Xamarin.iOS.Renderer
 
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SCIChartSurface target)
         {
-            target.RenderableSeries = new RenderableSeriesCollectioniOS(source.RenderableSeries);
+            _rSeriesCollection?.Dispose();
+            _rSeriesCollection = new RenderableSeriesCollectioniOS(target.RenderableSeries, source.RenderableSeries);
         }
 
         private void UpdateChartStyle(SciChartSurfaceX source, SCIChartSurface target)

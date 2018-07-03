@@ -2,34 +2,28 @@
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using SciChart.Charting.Model;
+using SciChart.Xamarin.Views.Utility;
 using SciChart.Xamarin.Views.Visuals.Axes;
+using IAxisXf = SciChart.Xamarin.Views.Visuals.Axes.IAxis;
+using IAxisNative = SciChart.Charting.Visuals.Axes.IAxis;
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
 {
-    public class AxisCollectionAndroid : AxisCollection, IDisposable
+    public class AxisCollectionAndroid : CollectionMapper<AxisCollection, IAxisXf, IAxisNative>
     {
-        private readonly ObservableCollection<IAxis> _crossPlatformSeries;
-
-        public AxisCollectionAndroid(ObservableCollection<IAxis> crossPlatformSeries)
+        public AxisCollectionAndroid(AxisCollection nativeCollection, ObservableCollection<IAxisXf> xformsCollection) 
+            : base(nativeCollection, xformsCollection)
         {
-            _crossPlatformSeries = crossPlatformSeries;
-            _crossPlatformSeries.CollectionChanged += OnCollectionChanged;
-
-            OnCollectionChanged(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
-        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        protected override void OnCleared(AxisCollection destCollection)
         {
-            this.Clear();
-            foreach (var item in _crossPlatformSeries)
-            {
-                this.Add((SciChart.Charting.Visuals.Axes.IAxis)((AxisCore)item).InnerAxis);
-            }
+            destCollection.Clear();
         }
 
-        public void Dispose()
+        protected override void OnAdded(AxisCollection destCollection, IAxisXf item)
         {
-            _crossPlatformSeries.CollectionChanged -= OnCollectionChanged;
+            destCollection.Add((IAxisNative)((AxisCore)item).InnerAxis);
         }
     }
 }
