@@ -4,7 +4,7 @@
     {
         public NumericAxis()
         {
-            InnerAxis = Factory.NewNumericAxis();
+            NativeAxis = Factory.NewNumericAxis(this);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
 
         private static void OnAxisAlignmentChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((IAxis)((AxisBase)bindable).InnerAxis).AxisAlignment = (AxisAlignment)newvalue;
+            ((IAxis)((AxisBase)bindable).NativeAxis).AxisAlignment = (AxisAlignment)newvalue;
         }
 
         public AxisAlignment AxisAlignment

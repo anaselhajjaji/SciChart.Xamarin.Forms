@@ -2,6 +2,6 @@
 {
     public interface IAxisFactory
     {
-        INumericAxis NewNumericAxis();
+        INumericAxis NewNumericAxis(NumericAxis xfAxis);
     }
 }

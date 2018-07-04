@@ -8,7 +8,7 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
     {
         protected static readonly IAxisFactory Factory;
 
-        public static string DefaultAxisId = "DefaultAxisId";
+        public static string DefaultAxisId = "DefaultAxisId";        
 
         /// <summary>
         /// Defines the XAxisId BindableProperty
@@ -39,7 +39,9 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
 
         public static readonly BindableProperty VisibleRangeProperty = BindableProperty.Create("VisibleRange", typeof(IRange), typeof(AxisCore), null, BindingMode.Default, null, OnVisibleRangeProperty, null, null, null);
 
-       
+        public static readonly BindableProperty GrowByProperty = BindableProperty.Create("GrowBy", typeof(IRange<double>), typeof(AxisCore), null, BindingMode.Default, null, OnGrowByPropertyChanged, null, null, null);
+
+        public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
 
         static AxisCore()
         {
@@ -51,7 +53,7 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
             }
         }
 
-        public IAxisCore InnerAxis { get; set; }
+        public IAxisCore NativeAxis { get; protected set; }
 
         public string AxisTitle
         {
@@ -131,70 +133,78 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
             set => SetValue(VisibleRangeProperty, value);
         }
 
-        public IRange<double> GrowBy { get; set; }
-        public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
+        public IRange<double> GrowBy
+        {
+            get => (IRange<double>) GetValue(GrowByProperty);
+            set => SetValue(GrowByProperty, value);
+        }
 
         private static void OnIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.Id = (string)newvalue;
+            ((AxisCore)bindable).NativeAxis.Id = (string)newvalue;
         }
 
         private static void OnAxisTitlePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.AxisTitle = (string)newvalue;
+            ((AxisCore)bindable).NativeAxis.AxisTitle = (string)newvalue;
         }
         private static void OnFlipCoordinatesPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.FlipCoordinates = (bool)newvalue;
+            ((AxisCore)bindable).NativeAxis.FlipCoordinates = (bool)newvalue;
         }
         private static void OnTextFormattingPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.TextFormatting = (string)newvalue;
+            ((AxisCore)bindable).NativeAxis.TextFormatting = (string)newvalue;
         }
 
         private static void OnDrawMinorTicksPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.DrawMinorTicks = (bool)newvalue;
+            ((AxisCore)bindable).NativeAxis.DrawMinorTicks = (bool)newvalue;
         }
 
         private static void OnDrawLabelsPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.DrawLabels = (bool)newvalue;
+            ((AxisCore)bindable).NativeAxis.DrawLabels = (bool)newvalue;
         }
 
         private static void OnDrawMajorTicksPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.DrawMajorTicks = (bool)newvalue;
+            ((AxisCore)bindable).NativeAxis.DrawMajorTicks = (bool)newvalue;
         }
 
         private static void OnDrawMajorGridLinesPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.DrawMajorGridLines = (bool)newvalue;
+            ((AxisCore)bindable).NativeAxis.DrawMajorGridLines = (bool)newvalue;
         }
 
         private static void OnDrawMinorGridLinesPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.DrawMinorGridLines = (bool)newvalue;
+            ((AxisCore)bindable).NativeAxis.DrawMinorGridLines = (bool)newvalue;
         }
 
         private static void OnDrawMajorBandsPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.DrawMajorBands = (bool)newvalue;
+            ((AxisCore)bindable).NativeAxis.DrawMajorBands = (bool)newvalue;
         }
 
         private static void OnAxisBandsFillPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.AxisBandsFill = (Color)newvalue;
+            ((AxisCore)bindable).NativeAxis.AxisBandsFill = (Color)newvalue;
         }
 
         private static void OnAutoRangePropertyPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.AutoRange = (AutoRange)newvalue;
+            ((AxisCore)bindable).NativeAxis.AutoRange = (AutoRange)newvalue;
         }
 
         private static void OnVisibleRangeProperty(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).InnerAxis.VisibleRange = (IRange)newvalue;
+            ((AxisCore)bindable).NativeAxis.VisibleRange = (IRange)newvalue;
+        }
+
+        private static void OnGrowByPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            ((AxisCore)bindable).NativeAxis.GrowBy = (IRange<double>)newvalue;
         }
     }
 }

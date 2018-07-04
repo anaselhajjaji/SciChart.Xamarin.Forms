@@ -21,7 +21,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 
         protected override void OnAdded(AxisCollection destCollection, IAxisXf item)
         {
-            destCollection.Add((IAxisNative)((AxisCore)item).InnerAxis);
+            destCollection.Add((IAxisNative)((AxisCore)item).NativeAxis);
         }
     }
 }

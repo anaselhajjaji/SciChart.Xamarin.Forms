@@ -3,17 +3,21 @@ using SciChart.Xamarin.Views.Model;
 using SciChart.Xamarin.Views.Visuals.Axes;
 using SciChart.Xamarin.Wpf.Renderer.Utility;
 using Xamarin.Forms;
-using NumericAxis = SciChart.Charting.Visuals.Axes.NumericAxis;
+using NumericAxisNative = SciChart.Charting.Visuals.Axes.NumericAxis;
+using NumericAxisXf = SciChart.Xamarin.Views.Visuals.Axes.NumericAxis;
 
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
-    internal class VisibleRangeMapper
-    {        
-    }
-
-    internal class NumericAxisWpf : NumericAxis, INumericAxis
+    internal class NumericAxisWpf : NumericAxisNative, INumericAxis
     {
+        private readonly NumericAxis _xfNumericAxis;
+
+        public NumericAxisWpf(NumericAxisXf xfNumericAxis)
+        {
+            _xfNumericAxis = xfNumericAxis;
+        }
+
         Color IAxisCore.AxisBandsFill
         {
             get => ColorUtil.ToXamarinColor(base.AxisBandsFill);

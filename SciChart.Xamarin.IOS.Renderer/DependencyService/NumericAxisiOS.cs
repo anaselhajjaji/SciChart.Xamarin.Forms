@@ -4,12 +4,20 @@ using SciChart.Xamarin.iOS.Renderer.Utility;
 using SciChart.Xamarin.Views.Model;
 using SciChart.Xamarin.Views.Visuals.Axes;
 using Xamarin.Forms;
+using NumericAxisXf = SciChart.Xamarin.Views.Visuals.Axes.NumericAxis;
 
 namespace SciChart.Xamarin.iOS.Renderer.DependencyService
 {
     [Foundation.Register]
     internal class NumericAxisiOS : SCINumericAxis, INumericAxis
     {
+        private NumericAxisXf _xfNumericAxis;
+
+        public NumericAxisiOS(NumericAxisXf xfNumericAxis)
+        {
+            this._xfNumericAxis = xfNumericAxis;
+        }
+
         event EventHandler<VisibleRangeChangedEventArgs> IAxisCore.VisibleRangeChanged
         {
             add { throw new NotImplementedException(); }

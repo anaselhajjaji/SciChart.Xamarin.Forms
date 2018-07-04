@@ -10,17 +10,20 @@ using AxisAlignment = SciChart.Xamarin.Views.Visuals.Axes.AxisAlignment;
 using IAxis = SciChart.Xamarin.Views.Visuals.Axes.IAxis;
 using IAxisCore = SciChart.Xamarin.Views.Visuals.Axes.IAxisCore;
 using NumericAxis = SciChart.Charting.Visuals.Axes.NumericAxis;
+using NumericAxisXf = SciChart.Xamarin.Views.Visuals.Axes.NumericAxis;
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
 {
     internal class NumericAxisAndroid : NumericAxis, INumericAxis
     {
+        private readonly NumericAxisXf _xfNumericAxis;
         private EventHandler<VisibleRangeChangedEventArgs> _visibleRangEventHandler;
 
-        public NumericAxisAndroid(Context context) : base(context)
+        public NumericAxisAndroid(Context context, NumericAxisXf xfNumericAxis) : base(context)
         {
+            _xfNumericAxis = xfNumericAxis;
             base.VisibleRangeChange += OnAxisVisibleRangeChanged;
-        } 
+        }
 
         public Color AxisBandsFill
         {
