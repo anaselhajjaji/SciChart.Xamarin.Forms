@@ -19,5 +19,7 @@ namespace SciChart.Xamarin.Views.Model
                 }
             }
         }
+
+        public IRange NativeRange { get; protected set; }
     }
 }

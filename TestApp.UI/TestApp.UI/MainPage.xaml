@@ -5,6 +5,7 @@
              xmlns:visuals="clr-namespace:SciChart.Xamarin.Views.Visuals;assembly=SciChart.Xamarin.Views"
              xmlns:renderableSeries="clr-namespace:SciChart.Xamarin.Views.Visuals.RenderableSeries;assembly=SciChart.Xamarin.Views"
              xmlns:axes="clr-namespace:SciChart.Xamarin.Views.Visuals.Axes;assembly=SciChart.Xamarin.Views"
+             xmlns:model="clr-namespace:SciChart.Xamarin.Views.Model;assembly=SciChart.Xamarin.Views"
              x:Class="TestApp.UI.MainPage">
 
     <Grid>
@@ -29,7 +30,11 @@
             </visuals:SciChartSurface.XAxes>
 
             <visuals:SciChartSurface.YAxes>
-                <axes:NumericAxis/>
+                <axes:NumericAxis>
+                    <axes:NumericAxis.GrowBy>
+                        <model:DoubleRange Min="0.1" Max="0.1"/>
+                    </axes:NumericAxis.GrowBy>
+                </axes:NumericAxis>
             </visuals:SciChartSurface.YAxes>
 
         </visuals:SciChartSurface>

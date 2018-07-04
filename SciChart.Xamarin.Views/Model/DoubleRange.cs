@@ -15,11 +15,9 @@ namespace SciChart.Xamarin.Views.Model
     /// </summary>
     public class DoubleRange : RangeBase, IDoubleRange
     {        
-        private readonly IDoubleRange _nativeRange;
-
         public DoubleRange()
         {
-            _nativeRange = Factory.NewDoubleRange(0,0);
+            NativeRange = Factory.NewDoubleRange(0,0);
         }
 
         /// <summary>
@@ -30,31 +28,31 @@ namespace SciChart.Xamarin.Views.Model
         /// <remarks></remarks>
         public DoubleRange(double min, double max) 
         {
-            _nativeRange = Factory.NewDoubleRange(min, max);
+            NativeRange = Factory.NewDoubleRange(min, max);
         }
 
         public double Min
         {
-            get => _nativeRange.Min;
-            set => _nativeRange.Min = value;
+            get => ((IDoubleRange)NativeRange).Min;
+            set => ((IDoubleRange)NativeRange).Min = value;
         }
 
         public double Max
         {
-            get => _nativeRange.Max;
-            set => _nativeRange.Max = value;
+            get => ((IDoubleRange)NativeRange).Max;
+            set => ((IDoubleRange)NativeRange).Max = value;
         }
 
         IComparable IRange.Min
         {
-            get => _nativeRange.Min;
-            set => _nativeRange.Min = (double)value;
+            get => ((IDoubleRange)NativeRange).Min;
+            set => ((IDoubleRange)NativeRange).Min = (double)value;
         }
 
         IComparable IRange.Max
         {
-            get => _nativeRange.Max;
-            set => _nativeRange.Max = (double)value;
+            get => ((IDoubleRange)NativeRange).Max;
+            set => ((IDoubleRange)NativeRange).Max = (double)value;
         }
 
         public IDoubleRange AsDoubleRange()

@@ -44,8 +44,13 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 
         DoubleRange IAxisCore.GrowBy
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get
+            {
+                var gb = base.GrowBy;
+                if (gb == null) return new DoubleRange(0, 0);
+                return new DoubleRange(gb.Min, gb.Max);
+            }
+            set => base.GrowBy = ((DoubleRangeWpf) ((RangeBase) value).NativeRange);
         }
 
         event EventHandler<VisibleRangeChangedEventArgs> IAxisCore.VisibleRangeChanged

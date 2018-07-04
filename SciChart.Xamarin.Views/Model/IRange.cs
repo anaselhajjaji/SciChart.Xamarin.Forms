@@ -23,6 +23,6 @@ namespace SciChart.Xamarin.Views.Model
         /// </summary>
         /// <example>For numeric ranges, the conversion is simple. For <see cref="DateRange"/> instances, returns a new <see cref="DoubleRange"/> with the Min and Max Ticks</example>
         /// <returns></returns>
-        IDoubleRange AsDoubleRange();        
+        IDoubleRange AsDoubleRange();
     }   
 }
