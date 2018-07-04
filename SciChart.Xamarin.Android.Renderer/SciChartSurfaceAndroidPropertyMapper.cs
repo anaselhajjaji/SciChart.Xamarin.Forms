@@ -12,7 +12,7 @@ namespace SciChart.Xamarin.Android.Renderer
         private AxisCollectionAndroid _xAxesCollection;
         private AxisCollectionAndroid _yAxesCollection;
 
-        public SciChartSurfaceAndroidPropertyMapper(SciChartSurfaceX sourceControl, Charting.Visuals.SciChartSurface targetControl) : base(targetControl)
+        public SciChartSurfaceAndroidPropertyMapper(SciChartSurfaceX sourceControl, Charting.Visuals.SciChartSurface targetControl) : base(sourceControl, targetControl)
         {
             this.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
             this.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => { }); // TODO: ChartTitle not supported in android
@@ -20,7 +20,7 @@ namespace SciChart.Xamarin.Android.Renderer
 //            this.Add(SciChartSurfaceX.ForegroundColorProperty.PropertyName, (s, d) => d.Foreground = new SolidColorBrush(ColorUtil.FromXamarinColor(s.ForegroundColor)));
             this.Add(SciChartSurfaceX.XAxesProperty.PropertyName, OnXAxesChanged);
             this.Add(SciChartSurfaceX.YAxesProperty.PropertyName, OnYAxesChanged);
-            this.Init(sourceControl);
+            this.Init();
         }
 
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SciChartSurface target)

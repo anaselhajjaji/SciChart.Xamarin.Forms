@@ -51,7 +51,7 @@ namespace SciChart.Xamarin.Android.Renderer.DependencyService
             set { throw new NotImplementedException(); }
         }
 
-        DoubleRange IAxisCore.GrowBy
+        IDoubleRange IAxisCore.GrowBy
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }

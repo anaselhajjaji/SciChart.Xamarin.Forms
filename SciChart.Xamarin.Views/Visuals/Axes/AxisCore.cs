@@ -39,7 +39,7 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
 
         public static readonly BindableProperty VisibleRangeProperty = BindableProperty.Create("VisibleRange", typeof(IRange), typeof(AxisCore), null, BindingMode.Default, null, OnVisibleRangeProperty, null, null, null);
 
-        public static readonly BindableProperty GrowByProperty = BindableProperty.Create("GrowBy", typeof(DoubleRange), typeof(AxisCore), null, BindingMode.Default, null, OnGrowByPropertyChanged, null, null, null);
+        public static readonly BindableProperty GrowByProperty = BindableProperty.Create("GrowBy", typeof(IDoubleRange), typeof(AxisCore), null, BindingMode.Default, null, OnGrowByPropertyChanged, null, null, null);
 
         public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
 
@@ -133,9 +133,9 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
             set => SetValue(VisibleRangeProperty, value);
         }
 
-        public DoubleRange GrowBy
+        public IDoubleRange GrowBy
         {
-            get => (DoubleRange) GetValue(GrowByProperty);
+            get => (IDoubleRange) GetValue(GrowByProperty);
             set => SetValue(GrowByProperty, value);
         }
 
@@ -204,7 +204,7 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
 
         private static void OnGrowByPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).NativeAxis.GrowBy = (DoubleRange)newvalue;
+            ((AxisCore)bindable).NativeAxis.GrowBy = (IDoubleRange)newvalue;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace SciChart.Xamarin.iOS.Renderer
         private AxisCollectioniOS _yAxesCollection;
         private RenderableSeriesCollectioniOS _rSeriesCollection;
 
-        public SciChartSurfaceiOSPropertyMapper(SciChartSurfaceX sourceControl, SCIChartSurface targetControl) : base(targetControl)
+        public SciChartSurfaceiOSPropertyMapper(SciChartSurfaceX sourceControl, SCIChartSurface targetControl) : base(sourceControl, targetControl)
         {
             this.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
             this.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => { d.ChartTitle = s.ChartTitle; });
@@ -21,7 +21,7 @@ namespace SciChart.Xamarin.iOS.Renderer
             this.Add(SciChartSurfaceX.ForegroundColorProperty.PropertyName, UpdateChartStyle);
             this.Add(SciChartSurfaceX.XAxesProperty.PropertyName, OnXAxesChanged);
             this.Add(SciChartSurfaceX.YAxesProperty.PropertyName, OnYAxesChanged);
-            this.Init(sourceControl);
+            this.Init();
         }
 
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SCIChartSurface target)

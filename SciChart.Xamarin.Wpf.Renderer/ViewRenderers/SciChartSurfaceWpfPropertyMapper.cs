@@ -17,7 +17,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
         private AxisCollectionWpf _xAxesCollection;
         private AxisCollectionWpf _yAxesCollection;
 
-        public SciChartSurfaceWpfPropertyMapper(SciChartSurfaceX sourceControl, SciChartSurface targetControl) : base(targetControl)
+        public SciChartSurfaceWpfPropertyMapper(SciChartSurfaceX sourceControl, SciChartSurface targetControl) : base(sourceControl, targetControl)
         {
             this.Add(SciChartSurfaceX.RenderableSeriesProperty.PropertyName, OnRenderableSeriesChanged);
             this.Add(SciChartSurfaceX.ChartTitleProperty.PropertyName, (s, d) => d.ChartTitle = s.ChartTitle);
@@ -26,7 +26,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
             this.Add(SciChartSurfaceX.XAxesProperty.PropertyName, OnXAxesChanged);
             this.Add(SciChartSurfaceX.YAxesProperty.PropertyName, OnYAxesChanged);
 
-            this.Init(sourceControl);
+            this.Init();
         }        
 
         private void OnRenderableSeriesChanged(SciChartSurfaceX source, SciChartSurface target)

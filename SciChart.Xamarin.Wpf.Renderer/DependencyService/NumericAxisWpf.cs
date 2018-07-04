@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using SciChart.Xamarin.Views.Model;
+using SciChart.Xamarin.Views.Utility;
 using SciChart.Xamarin.Views.Visuals.Axes;
 using SciChart.Xamarin.Wpf.Renderer.Utility;
 using Xamarin.Forms;
@@ -8,15 +11,23 @@ using NumericAxisXf = SciChart.Xamarin.Views.Visuals.Axes.NumericAxis;
 
 
 namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
-{
+{    
+    public class NumericAxisPropertyMapper : BiDirectionalPropertyMapper<NumericAxisXf, NumericAxisNative>
+    {
+        public NumericAxisPropertyMapper(NumericAxisXf sourceControl, NumericAxisNative targetControl) : base(sourceControl, targetControl)
+        {
+            //this.Add(AxisCore.AxisBandsFillProperty.PropertyName, (s,t) => t.AxisBandsFill = ColorUtil.FromXamarinColor(s.AxisBandsFill));
+        }
+    }
+
     internal class NumericAxisWpf : NumericAxisNative, INumericAxis
     {
-        private readonly NumericAxis _xfNumericAxis;
+        private NumericAxisPropertyMapper _mapper;
 
         public NumericAxisWpf(NumericAxisXf xfNumericAxis)
         {
-            _xfNumericAxis = xfNumericAxis;
-        }
+            _mapper = new NumericAxisPropertyMapper(xfNumericAxis, this);
+        }        
 
         Color IAxisCore.AxisBandsFill
         {
@@ -42,7 +53,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
             set { throw new NotImplementedException(); }
         }
 
-        DoubleRange IAxisCore.GrowBy
+        IDoubleRange IAxisCore.GrowBy
         {
             get
             {
@@ -63,6 +74,10 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
         {
             get => AxisHelper.ToXfAxisAlignemnt(base.AxisAlignment);
             set => base.AxisAlignment = AxisHelper.FromXfAxisAlignment(value);
-        }        
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+        }
     }
 }

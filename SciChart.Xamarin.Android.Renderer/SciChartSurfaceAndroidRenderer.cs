@@ -50,11 +50,5 @@ namespace SciChart.Xamarin.Android.Renderer
 
             base.OnElementChanged(e);
         }        
-
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            _propertyMapper?.OnElementPropertyChanged(sender, e);   
-            base.OnElementPropertyChanged(sender, e);
-        }
     }
 }
