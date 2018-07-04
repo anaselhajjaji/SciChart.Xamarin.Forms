@@ -20,7 +20,7 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 
         protected override void OnAdded(ObservableCollection<IRenderableSeriesWpf> destCollection, IRenderableSeriesXf item)
         {
-            destCollection.Add((IRenderableSeriesWpf)((CrossPlatformRenderableSeriesBase)item).InnerSeries);
+            destCollection.Add((IRenderableSeriesWpf)((CrossPlatformRenderableSeriesBase)item).NativeSeries);
         }
     }
 }

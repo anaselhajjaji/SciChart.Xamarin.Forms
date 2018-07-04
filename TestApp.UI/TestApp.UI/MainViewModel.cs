@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SciChart.Wpf.UI.Reactive.Observability;
+using SciChart.Xamarin.Views.Model;
 using SciChart.Xamarin.Views.Model.DataSeries;
 using Xamarin.Forms;
 

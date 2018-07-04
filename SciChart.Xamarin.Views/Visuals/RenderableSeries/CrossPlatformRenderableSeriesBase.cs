@@ -84,29 +84,29 @@ namespace SciChart.Xamarin.Views.Visuals.RenderableSeries
         }
 
         // Platform specific series implementation
-        public IRenderableSeries InnerSeries { get; set; }
+        public IRenderableSeries NativeSeries { get; set; }
 
         private static void OnXAxisIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((CrossPlatformRenderableSeriesBase)bindable).InnerSeries.XAxisId = (string)newvalue;
+            ((CrossPlatformRenderableSeriesBase)bindable).NativeSeries.XAxisId = (string)newvalue;
         }
 
         private static void OnYAxisIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((CrossPlatformRenderableSeriesBase)bindable).InnerSeries.YAxisId = (string)newvalue;
+            ((CrossPlatformRenderableSeriesBase)bindable).NativeSeries.YAxisId = (string)newvalue;
         }
         private static void OnStrokePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((CrossPlatformRenderableSeriesBase)bindable).InnerSeries.Stroke = (Color)newvalue;
+            ((CrossPlatformRenderableSeriesBase)bindable).NativeSeries.Stroke = (Color)newvalue;
         }
         private static void OnStrokeThicknessPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((CrossPlatformRenderableSeriesBase)bindable).InnerSeries.StrokeThickness = (int)newvalue;
+            ((CrossPlatformRenderableSeriesBase)bindable).NativeSeries.StrokeThickness = (int)newvalue;
         }
 
         private static void OnDataSeriesPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((CrossPlatformRenderableSeriesBase)bindable).InnerSeries.DataSeries = (IDataSeries)newvalue;
+            ((CrossPlatformRenderableSeriesBase)bindable).NativeSeries.DataSeries = (IDataSeries)newvalue;
         }
     }
 }

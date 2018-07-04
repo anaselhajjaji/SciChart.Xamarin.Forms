@@ -97,7 +97,7 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
         /// <summary>
         /// Gets or sets the GrowBy Factor. e.g. GrowBy(0.1, 0.2) will increase the axis extents by 10% (min) and 20% (max) outside of the data range
         /// </summary>
-        IRange<double> GrowBy { get; set; }
+        DoubleRange GrowBy { get; set; }
 
         /// <summary>
         /// Raised when the VisibleRange is changed

@@ -5,7 +5,7 @@ using SciChart.Xamarin.Android.Renderer.Utility;
 using SciChart.Xamarin.Views.Model;
 using SciChart.Xamarin.Views.Visuals.Axes;
 using Xamarin.Forms;
-using AutoRange = SciChart.Xamarin.Views.Model.AutoRange;
+using AutoRange = SciChart.Xamarin.Views.Visuals.Axes.AutoRange;
 using AxisAlignment = SciChart.Xamarin.Views.Visuals.Axes.AxisAlignment;
 using IAxis = SciChart.Xamarin.Views.Visuals.Axes.IAxis;
 using IAxisCore = SciChart.Xamarin.Views.Visuals.Axes.IAxisCore;
@@ -51,7 +51,7 @@ namespace SciChart.Xamarin.Android.Renderer.DependencyService
             set { throw new NotImplementedException(); }
         }
 
-        IRange<double> IAxisCore.GrowBy
+        DoubleRange IAxisCore.GrowBy
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }

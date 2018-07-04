@@ -61,3 +61,4 @@ using Xamarin.Forms.Platform.WPF;
 [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.DataSeriesFactoryWpf))]
 [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.RenderableSeriesFactoryWpf))]
 [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.AxisFactoryWpf))]
+[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.Wpf.Renderer.DependencyService.RangeFactoryWpf))]

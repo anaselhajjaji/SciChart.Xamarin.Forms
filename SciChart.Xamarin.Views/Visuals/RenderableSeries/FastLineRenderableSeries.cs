@@ -7,7 +7,7 @@ namespace SciChart.Xamarin.Views.Visuals.RenderableSeries
     {                
         public FastLineRenderableSeries()
         {
-            InnerSeries = Factory.NewLineSeries();
+            NativeSeries = Factory.NewLineSeries();
         }               
     }
 }

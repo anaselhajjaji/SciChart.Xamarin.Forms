@@ -42,10 +42,10 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
             set { throw new NotImplementedException(); }
         }
 
-        IRange<double> IAxisCore.GrowBy
+        DoubleRange IAxisCore.GrowBy
         {
-            get => new DoubleRange(base.GrowBy.Min, base.GrowBy.Max);
-            set => base.GrowBy = new Data.Model.DoubleRange(value.Min, value.Max);
+            get { throw new NotImplementedException(); }
+            set { throw new NotImplementedException(); }
         }
 
         event EventHandler<VisibleRangeChangedEventArgs> IAxisCore.VisibleRangeChanged

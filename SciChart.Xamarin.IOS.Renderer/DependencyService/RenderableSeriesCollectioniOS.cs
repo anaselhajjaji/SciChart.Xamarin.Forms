@@ -23,7 +23,7 @@ namespace SciChart.Xamarin.iOS.Renderer.DependencyService
 
         protected override void OnAdded(SCIRenderableSeriesCollection destCollection, IRenderableSeriesXf item)
         {
-            destCollection.Add((IRenderableSeriesiOS)((CrossPlatformRenderableSeriesBase)item).InnerSeries);
+            destCollection.Add((IRenderableSeriesiOS)((CrossPlatformRenderableSeriesBase)item).NativeSeries);
         }
     }
 }

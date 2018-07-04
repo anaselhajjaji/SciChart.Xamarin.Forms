@@ -89,8 +89,10 @@
     <Compile Include="DependencyService\AxisCollectionWpf.cs" />
     <Compile Include="DependencyService\AxisFactoryWpf.cs" />
     <Compile Include="DependencyService\DataSeriesFactoryWpf.cs" />
+    <Compile Include="DependencyService\DoubleRangeWpf.cs" />
     <Compile Include="DependencyService\FastLineRenderableSeriesWpf.cs" />
     <Compile Include="DependencyService\NumericAxisWpf.cs" />
+    <Compile Include="DependencyService\RangeFactoryWpf.cs" />
     <Compile Include="DependencyService\RenderableSeriesCollectionWpf.cs" />
     <Compile Include="DependencyService\RenderableSeriesFactoryWpf.cs" />
     <Compile Include="DependencyService\XyDataSeriesWpf.cs" />

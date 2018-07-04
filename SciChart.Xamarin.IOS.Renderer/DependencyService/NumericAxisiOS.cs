@@ -85,7 +85,7 @@ namespace SciChart.Xamarin.iOS.Renderer.DependencyService
             set { throw new NotImplementedException(); }
         }
 
-        public IRange<double> GrowBy
+        public DoubleRange GrowBy
         {
             get { throw new NotImplementedException(); }
             set { throw new NotImplementedException(); }

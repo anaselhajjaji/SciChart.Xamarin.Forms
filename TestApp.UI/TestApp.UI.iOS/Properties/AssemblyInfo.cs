@@ -40,3 +40,4 @@ using Xamarin.Forms;
 [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.iOS.Renderer.DependencyService.DataSeriesFactoryiOS))]
 [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.iOS.Renderer.DependencyService.RenderableSeriesFactoryiOS))]
 [assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.iOS.Renderer.DependencyService.AxisFactoryiOS))]
+[assembly: Xamarin.Forms.Dependency(typeof(SciChart.Xamarin.iOS.Renderer.DependencyService.RangeFactoryiOS))]

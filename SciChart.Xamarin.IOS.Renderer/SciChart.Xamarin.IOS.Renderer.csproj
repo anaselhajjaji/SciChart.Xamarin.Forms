@@ -65,8 +65,10 @@
     <Compile Include="DependencyService\AxisCollectioniOS.cs" />
     <Compile Include="DependencyService\AxisFactoryiOS.cs" />
     <Compile Include="DependencyService\DataSeriesFactoryiOS.cs" />
+    <Compile Include="DependencyService\DoubleRangeiOS.cs" />
     <Compile Include="DependencyService\FastLineRenderableSeriesiOS.cs" />
     <Compile Include="DependencyService\NumericAxisiOS.cs" />
+    <Compile Include="DependencyService\RangeFactoryiOS.cs" />
     <Compile Include="DependencyService\RenderableSeriesCollectioniOS.cs" />
     <Compile Include="DependencyService\RenderableSeriesFactoryiOS.cs" />
     <Compile Include="DependencyService\XyDataSeriesiOS.cs" />

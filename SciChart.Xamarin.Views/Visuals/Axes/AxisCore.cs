@@ -17,29 +17,29 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
 
         public static readonly BindableProperty AxisTitleProperty = BindableProperty.Create("AxisTitle", typeof(string), typeof(AxisCore), null, BindingMode.Default, null, OnAxisTitlePropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty FlipCoordinatesProperty = BindableProperty.Create("FlipCoordinates", typeof(string), typeof(AxisCore), null, BindingMode.Default, null, OnFlipCoordinatesPropertyChanged, null, null, null);        
+        public static readonly BindableProperty FlipCoordinatesProperty = BindableProperty.Create("FlipCoordinates", typeof(bool), typeof(AxisCore), false, BindingMode.Default, null, OnFlipCoordinatesPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty TextFormattingProperty = BindableProperty.Create("TextFormatting", typeof(string), typeof(AxisCore), null, BindingMode.Default, null, OnTextFormattingPropertyChanged, null, null, null);        
+        public static readonly BindableProperty TextFormattingProperty = BindableProperty.Create("TextFormatting", typeof(string), typeof(AxisCore), "0:00", BindingMode.Default, null, OnTextFormattingPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty DrawMinorTicksProperty = BindableProperty.Create("DrawMinorTicks", typeof(bool), typeof(AxisCore), null, BindingMode.Default, null, OnDrawMinorTicksPropertyChanged, null, null, null);        
+        public static readonly BindableProperty DrawMinorTicksProperty = BindableProperty.Create("DrawMinorTicks", typeof(bool), typeof(AxisCore), true, BindingMode.Default, null, OnDrawMinorTicksPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty DrawLabelsProperty = BindableProperty.Create("DrawLabels", typeof(bool), typeof(AxisCore), null, BindingMode.Default, null, OnDrawLabelsPropertyChanged, null, null, null);        
+        public static readonly BindableProperty DrawLabelsProperty = BindableProperty.Create("DrawLabels", typeof(bool), typeof(AxisCore), true, BindingMode.Default, null, OnDrawLabelsPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty DrawMajorTicksProperty = BindableProperty.Create("DrawMajorTicks", typeof(bool), typeof(AxisCore), null, BindingMode.Default, null, OnDrawMajorTicksPropertyChanged, null, null, null);        
+        public static readonly BindableProperty DrawMajorTicksProperty = BindableProperty.Create("DrawMajorTicks", typeof(bool), typeof(AxisCore), true, BindingMode.Default, null, OnDrawMajorTicksPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty DrawMajorGridLinesProperty = BindableProperty.Create("DrawMajorGridLines", typeof(bool), typeof(AxisCore), null, BindingMode.Default, null, OnDrawMajorGridLinesPropertyChanged, null, null, null);        
+        public static readonly BindableProperty DrawMajorGridLinesProperty = BindableProperty.Create("DrawMajorGridLines", typeof(bool), typeof(AxisCore), true, BindingMode.Default, null, OnDrawMajorGridLinesPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty DrawMinorGridLinesProperty = BindableProperty.Create("DrawMinorGridLines", typeof(bool), typeof(AxisCore), null, BindingMode.Default, null, OnDrawMinorGridLinesPropertyChanged, null, null, null);        
+        public static readonly BindableProperty DrawMinorGridLinesProperty = BindableProperty.Create("DrawMinorGridLines", typeof(bool), typeof(AxisCore), true, BindingMode.Default, null, OnDrawMinorGridLinesPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty DrawMajorBandsProperty = BindableProperty.Create("DrawMajorBands", typeof(bool), typeof(AxisCore), null, BindingMode.Default, null, OnDrawMajorBandsPropertyChanged, null, null, null);        
+        public static readonly BindableProperty DrawMajorBandsProperty = BindableProperty.Create("DrawMajorBands", typeof(bool), typeof(AxisCore), true, BindingMode.Default, null, OnDrawMajorBandsPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty AxisBandsFillProperty = BindableProperty.Create("AxisBandsFill", typeof(Color), typeof(AxisCore), null, BindingMode.Default, null, OnAxisBandsFillPropertyChanged, null, null, null);        
+        public static readonly BindableProperty AxisBandsFillProperty = BindableProperty.Create("AxisBandsFill", typeof(Color), typeof(AxisCore), Color.Default, BindingMode.Default, null, OnAxisBandsFillPropertyChanged, null, null, null);        
 
-        public static readonly BindableProperty AutoRangeProperty = BindableProperty.Create("AutoRange", typeof(AutoRange), typeof(AxisCore), null, BindingMode.Default, null, OnAutoRangePropertyPropertyChanged, null, null, null);        
+        public static readonly BindableProperty AutoRangeProperty = BindableProperty.Create("AutoRange", typeof(AutoRange), typeof(AxisCore), AutoRange.Once, BindingMode.Default, null, OnAutoRangePropertyPropertyChanged, null, null, null);        
 
         public static readonly BindableProperty VisibleRangeProperty = BindableProperty.Create("VisibleRange", typeof(IRange), typeof(AxisCore), null, BindingMode.Default, null, OnVisibleRangeProperty, null, null, null);
 
-        public static readonly BindableProperty GrowByProperty = BindableProperty.Create("GrowBy", typeof(IRange<double>), typeof(AxisCore), null, BindingMode.Default, null, OnGrowByPropertyChanged, null, null, null);
+        public static readonly BindableProperty GrowByProperty = BindableProperty.Create("GrowBy", typeof(DoubleRange), typeof(AxisCore), null, BindingMode.Default, null, OnGrowByPropertyChanged, null, null, null);
 
         public event EventHandler<VisibleRangeChangedEventArgs> VisibleRangeChanged;
 
@@ -133,9 +133,9 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
             set => SetValue(VisibleRangeProperty, value);
         }
 
-        public IRange<double> GrowBy
+        public DoubleRange GrowBy
         {
-            get => (IRange<double>) GetValue(GrowByProperty);
+            get => (DoubleRange) GetValue(GrowByProperty);
             set => SetValue(GrowByProperty, value);
         }
 
@@ -204,7 +204,7 @@ namespace SciChart.Xamarin.Views.Visuals.Axes
 
         private static void OnGrowByPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            ((AxisCore)bindable).NativeAxis.GrowBy = (IRange<double>)newvalue;
+            ((AxisCore)bindable).NativeAxis.GrowBy = (DoubleRange)newvalue;
         }
     }
 }
