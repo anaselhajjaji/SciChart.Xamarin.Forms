@@ -12,7 +12,16 @@ namespace TestApp.UI
 	{
 		public MainPage()
 		{
-			InitializeComponent();
+		    try
+		    {
+		        InitializeComponent();
+            }
+		    catch (Exception e)
+		    {
+		        Console.WriteLine(e);
+		        throw;
+		    }
+			
 		    this.BindingContext = new MainViewModel();            
 		}
 	}

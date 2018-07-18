@@ -6,6 +6,9 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using SciChart.Xamarin.Android.Renderer.DependencyService;
+using SciChart.Xamarin.Views.Model;
+using Xamarin.Forms;
 
 namespace TestApp.UI.Droid
 {

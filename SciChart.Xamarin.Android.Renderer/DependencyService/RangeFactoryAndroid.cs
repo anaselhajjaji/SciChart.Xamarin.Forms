@@ -1,8 +1,9 @@
-﻿using SciChart.Xamarin.Views.Model;
+﻿using System;
+using SciChart.Xamarin.Views.Model;
 
 namespace SciChart.Xamarin.Android.Renderer.DependencyService
 {
-    public class RangeFactoryAndrioid : IRangeFactory
+    public class RangeFactoryAndroid : IRangeFactory
     {
         public IDoubleRange NewDoubleRange(double min, double max)
         {

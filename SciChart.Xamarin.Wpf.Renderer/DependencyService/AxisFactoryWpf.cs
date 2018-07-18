@@ -4,9 +4,9 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
 {
     public class AxisFactoryWpf : IAxisFactory
     {
-        public INumericAxis NewNumericAxis(NumericAxis xfAxis)
+        public INumericAxis NewNumericAxis()
         {
-            return new NumericAxisWpf(xfAxis);
+            return new NumericAxisWpf();
         }
     }
 }

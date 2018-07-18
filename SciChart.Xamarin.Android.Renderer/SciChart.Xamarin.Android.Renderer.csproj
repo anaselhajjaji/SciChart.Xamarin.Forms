@@ -54,7 +54,7 @@
     <Compile Include="DependencyService\DoubleRangeAndroid.cs" />
     <Compile Include="DependencyService\FastLineRenderableSeriesAndroid.cs" />
     <Compile Include="DependencyService\NumericAxisAndroid.cs" />
-    <Compile Include="DependencyService\RangeFactoryAndrioid.cs" />
+    <Compile Include="DependencyService\RangeFactoryAndroid.cs" />
     <Compile Include="DependencyService\RenderableSeriesCollectionAndroid.cs" />
     <Compile Include="DependencyService\RenderableSeriesFactoryAndroid.cs" />
     <Compile Include="DependencyService\XyDataSeriesWpf.cs" />
@@ -85,7 +85,7 @@
       <Version>2.1.0.769</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>3.1.0.583944</Version>
+      <Version>3.2.0.637442-pre1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

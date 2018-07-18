@@ -24,9 +24,9 @@ namespace SciChart.Xamarin.Wpf.Renderer.DependencyService
     {
         private NumericAxisPropertyMapper _mapper;
 
-        public NumericAxisWpf(NumericAxisXf xfNumericAxis)
+        public NumericAxisWpf()
         {
-            _mapper = new NumericAxisPropertyMapper(xfNumericAxis, this);
+            //_mapper = new NumericAxisPropertyMapper(xfNumericAxis, this);
         }        
 
         Color IAxisCore.AxisBandsFill

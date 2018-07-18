@@ -11,11 +11,8 @@ namespace SciChart.Xamarin.iOS.Renderer.DependencyService
     [Foundation.Register]
     internal class NumericAxisiOS : SCINumericAxis, INumericAxis
     {
-        private NumericAxisXf _xfNumericAxis;
-
-        public NumericAxisiOS(NumericAxisXf xfNumericAxis)
+        public NumericAxisiOS()
         {
-            this._xfNumericAxis = xfNumericAxis;
         }
 
         event EventHandler<VisibleRangeChangedEventArgs> IAxisCore.VisibleRangeChanged

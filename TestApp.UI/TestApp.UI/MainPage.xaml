@@ -30,11 +30,7 @@
             </visuals:SciChartSurface.XAxes>
 
             <visuals:SciChartSurface.YAxes>
-                <axes:NumericAxis>
-                    <axes:NumericAxis.GrowBy>
-                        <model:DoubleRange Min="0.1" Max="0.1"/>
-                    </axes:NumericAxis.GrowBy>
-                </axes:NumericAxis>
+               <axes:NumericAxis/>
             </visuals:SciChartSurface.YAxes>
 
         </visuals:SciChartSurface>

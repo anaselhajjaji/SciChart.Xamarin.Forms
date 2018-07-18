@@ -16,12 +16,10 @@ namespace SciChart.Xamarin.Android.Renderer.DependencyService
 {
     internal class NumericAxisAndroid : NumericAxis, INumericAxis
     {
-        private readonly NumericAxisXf _xfNumericAxis;
         private EventHandler<VisibleRangeChangedEventArgs> _visibleRangEventHandler;
 
-        public NumericAxisAndroid(Context context, NumericAxisXf xfNumericAxis) : base(context)
+        public NumericAxisAndroid(Context context) : base(context)
         {
-            _xfNumericAxis = xfNumericAxis;
             base.VisibleRangeChange += OnAxisVisibleRangeChanged;
         }
 
