@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using SciChart.Charting.ChartModifiers;
 using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Data.Model;
@@ -35,7 +36,16 @@ namespace SciChart.Xamarin.Wpf.Renderer.ViewRenderers
             if (Control == null)
             {
                 // Create the native control 
-                this.SetNativeControl(new SciChartSurface());
+                SciChartSurface surface = new SciChartSurface();
+
+                // Enable the zoom
+                using (surface.SuspendUpdates())
+                {
+                    surface.ChartModifier = new ModifierGroup(new ZoomPanModifier(),
+                        new MouseWheelZoomModifier());
+                }
+
+                this.SetNativeControl(surface);
 
                 // Setup property mapper 
                 _propertyMapper = new SciChartSurfaceWpfPropertyMapper(e.NewElement, Control);                
