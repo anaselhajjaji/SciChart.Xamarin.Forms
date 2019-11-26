@@ -50,11 +50,11 @@
     <Reference Include="OpenTK.GLControl, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\OpenTK.GLControl.3.0.0\lib\net20\OpenTK.GLControl.dll</HintPath>
     </Reference>
-    <Reference Include="SciChart.UI.Bootstrap, Version=2.0.28.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SciChart.UI.Bootstrap.2.0.28\lib\netstandard2.0\SciChart.UI.Bootstrap.dll</HintPath>
+    <Reference Include="SciChart.UI.Bootstrap, Version=2.0.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SciChart.UI.Bootstrap.2.0.38\lib\netstandard2.0\SciChart.UI.Bootstrap.dll</HintPath>
     </Reference>
-    <Reference Include="SciChart.UI.Reactive, Version=2.0.28.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\SciChart.UI.Reactive.2.0.28\lib\netstandard2.0\SciChart.UI.Reactive.dll</HintPath>
+    <Reference Include="SciChart.UI.Reactive, Version=2.0.38.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\SciChart.UI.Reactive.2.0.38\lib\netstandard2.0\SciChart.UI.Reactive.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

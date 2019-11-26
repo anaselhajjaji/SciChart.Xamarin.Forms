@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SciChart.iOS.Charting, Version=2.0.0.453, Culture=neutral, PublicKeyToken=b55dd9efe817e823, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciChart.iOS.2.1.0.769\lib\Xamarin.iOS10\SciChart.iOS.Charting.dll</HintPath>
+      <HintPath>..\packages\SciChart.iOS.2.2.1.839\lib\Xamarin.iOS10\SciChart.iOS.Charting.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />

@@ -41,7 +41,20 @@ namespace SciChart.Xamarin.Android.Renderer
             if (Control == null)
             {
                 // Create the native control 
-                this.SetNativeControl(new SciChartSurface(Context));
+                SciChartSurface surface = new SciChartSurface(Context);
+
+                // Enable the zoom
+                using (surface.SuspendUpdates())
+                {
+                    surface.ChartModifiers = new Charting.Model.ChartModifierCollection
+                    {
+                        new Charting.Modifiers.ZoomPanModifier(),
+                        new Charting.Modifiers.PinchZoomModifier(),
+                        new Charting.Modifiers.ZoomExtentsModifier(),
+                    };
+                }
+
+                this.SetNativeControl(surface);
                 Control.RenderSurface = new RenderSurface(Context);
 
                 // Setup the property mapper 

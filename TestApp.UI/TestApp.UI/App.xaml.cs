@@ -14,14 +14,14 @@ namespace TestApp.UI
 
             // Setup SciChart Licenses
 		    string iosAndroidLicense = @"<LicenseContract>
-                  <Customer>ABT Test</Customer>
-                  <OrderId>ABT Test</OrderId>
-                  <LicenseCount>1</LicenseCount>
-                  <IsTrialLicense>true</IsTrialLicense>
-                  <SupportExpires>07/28/2018 00:00:00</SupportExpires>
-                  <ProductCode>SC-IOS-ANDROID-2D-PRO</ProductCode>
-                  <KeyCode>27289309f935227d91c4f89a69a0513d7da9c976c61122821344bdadb805e4b9367e51a3670dbf460bf1c5ead5bdffec185585c99d48b98e2e55be9d1968e2e0c53803a6fedbe8e821b8f888930dfa1a968b757cc53a8a907f0b7fc58a8b5a425a42e8fade27682c46c39d34a488080cf060b9bb533ab8d44f918d2b0d42d237281f66022c009bd3b3a737d95119d6757f534182b636991d528f159c13f9</KeyCode>
-                </LicenseContract>";
+              <Customer>elhajjajiana.s@gmail.com</Customer>
+              <OrderId>Trial</OrderId>
+              <LicenseCount>1</LicenseCount>
+              <IsTrialLicense>true</IsTrialLicense>
+              <SupportExpires>12/12/2019 00:00:00</SupportExpires>
+              <ProductCode>SC-ANDROID-2D-ENTERPRISE-SRC</ProductCode>
+              <KeyCode>2cfdbbf5a519adec79de947564e98432e6c629baa35b72059d51f8e515dc8382046a7450fd66df999763ab071d9c57cd43a03eee2a2a2ee52f74beef2d05461b4495cacda56aa2352338f8dc0a11f38970cb3caf79f1077c6fea68f509d6e3078379adc2bf016055dfa051d578992f3fe3b1f330982bf2f58e9cf0c743f4ccbf1423185fee948ac5395319e5f724217e48c24054ed5d407345a574235d406203f6df905e5057cdbf5b901cbce0201f441ff5</KeyCode>
+            </LicenseContract>";
 
             SciChartLicenseManager.AddLicense(SciChartPlatform.Android, iosAndroidLicense);
 		    SciChartLicenseManager.AddLicense(SciChartPlatform.iOS, iosAndroidLicense);
